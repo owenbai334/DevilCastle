@@ -388,7 +388,6 @@ GameObject:
   - component: {fileID: -5643316213166488897}
   - component: {fileID: -2711963683813149334}
   - component: {fileID: -5185847339251654549}
-  - component: {fileID: 1091387676}
   m_Layer: 6
   m_Name: OrangeEnemy
   m_TagString: Enemy
@@ -474,14 +473,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2669a194bcd19144fac8b96d60928ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   MoveSpeed: 2.5
   AllMovetime: 1
   OrangeSprites:
   - {fileID: 21300000, guid: ecadcdaec66b3c3499b175d46ca2a498, type: 3}
   - {fileID: 21300000, guid: d4be9a473da97da4da224c6203c43358, type: 3}
   damage: 10
-  hp: 100
+  hp: 30
   hpSlider: {fileID: 723807119}
 --- !u!61 &-2711963683813149334
 BoxCollider2D:
@@ -496,7 +494,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000006556511}
+  m_Offset: {x: 0.030792356, y: 0.28174496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -507,7 +505,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.1337185, y: 3.980845}
+  m_Size: {x: 5.0574856, y: 4.5443335}
   m_EdgeRadius: 0
 --- !u!50 &-5185847339251654549
 Rigidbody2D:
@@ -530,19 +528,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1091387676
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9077776831185744476}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.06002113, y: -0.063693054}
-  serializedVersion: 2
-  m_Radius: 2.3408408

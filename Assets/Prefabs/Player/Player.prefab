@@ -538,14 +538,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpSpeed: 300
-  onFloor: 1
-  farPrefab: {fileID: 5574177991627017971, guid: 81c56d74109b0054597badd937d8cfee, type: 3}
+  farPrefab:
+  - {fileID: 5574177991627017971, guid: 81c56d74109b0054597badd937d8cfee, type: 3}
   AttackTimeval: 0.4
-  closePrefab: {fileID: 4553158972446265356, guid: 1d16234c6795bdf4bbbcd9a28fb30390, type: 3}
+  closePrefab:
+  - {fileID: 0}
+  ClosePosition:
+  - {fileID: 854008556}
+  - {fileID: 1555565162}
   PlayerSprites:
   - {fileID: 21300000, guid: 5fabbd30f8ce86148bd47d00437163bf, type: 3}
   - {fileID: 21300000, guid: a6ad59d48d1346342a5667e3ee5eab2f, type: 3}
   hp: 100
+  hpSlider: {fileID: 1378990240}
 --- !u!50 &748039137
 Rigidbody2D:
   serializedVersion: 4

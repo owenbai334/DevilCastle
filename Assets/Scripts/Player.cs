@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public float hp = 100;
     private float TotalHp;
     public Slider hpSlider;
-    
+    public static Player Instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -109,12 +109,12 @@ public class Player : MonoBehaviour
     }
     public void Ondamage(float damage)
     {
+        hp-=damage;
+        hpSlider.value =hp/TotalHp;
         if(hp<=0)
         {
             Die();
         }
-        hp-=damage;
-        hpSlider.value =hp/TotalHp;
     }
     void Die()
     {
