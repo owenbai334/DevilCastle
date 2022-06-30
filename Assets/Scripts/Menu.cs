@@ -5,8 +5,9 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
     public static Menu Instance;
-    public GameObject OurMenu;
-    private int count=0;
+    public GameObject[] Menus;
+    private bool menucount = false;
+    private bool exitcount = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +21,33 @@ public class Menu : MonoBehaviour
     }
     public void escape()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)&&count ==0)
+        if(Input.GetKeyDown(KeyCode.Escape)&&menucount==false)
         {
-            OurMenu.SetActive(true);
+            Menus[0].SetActive(true);
+            Menus[1].SetActive(false);
             Time.timeScale=0;
-            count=1;
+            menucount=true;
         } 
-        else if(Input.GetKeyDown(KeyCode.Escape)&&count ==1)
+        else if(Input.GetKeyDown(KeyCode.Escape)&&menucount==true)
         {
-            OurMenu.SetActive(false);
+            Menus[0].SetActive(false);
+            Menus[1].SetActive(false);
             Time.timeScale=1;
-            count=0;
+            exitcount = false;
+            menucount=false;
         }              
+    }
+    public void Exit()
+    {
+        if(exitcount == false)
+        {
+            Menus[1].SetActive(true);
+            exitcount = true;
+        }
+        else
+        {
+            Menus[1].SetActive(false);
+            exitcount = false;
+        }      
     }
 }

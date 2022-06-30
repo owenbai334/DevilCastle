@@ -478,7 +478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72d266d8ba3e6f43abd26b6366ecddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OurMenu: {fileID: 1926281357}
+  Menus:
+  - {fileID: 1926281357}
+  - {fileID: 1267898006}
 --- !u!1 &257201407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 965888745}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 201297153}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &965888745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,7 +1746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363486994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: -0.57, z: 0}
+  m_LocalPosition: {x: 7.43, y: -0.57, z: 0}
   m_LocalScale: {x: 20.820047, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
