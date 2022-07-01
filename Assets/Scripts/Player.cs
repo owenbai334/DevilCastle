@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
+
             sr.sprite = PlayerSprites[0];
             RealPosition = ClosePosition[1];
             transform.Translate(new Vector3(-moveSpeed*Time.deltaTime,0,0),Space.World);
