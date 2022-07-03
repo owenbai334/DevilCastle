@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     public static Menu Instance;
-    public GameObject[] Menus;
+    public GameObject[] Menus; //0 暫停背景, 1 兩個退出按鈕,2 一般按鈕,3 滾輪
+    public GameObject[] Buttons; //0 狀態,1 裝備,2 道具,3設定,4存檔,5讀檔
     private bool menucount = false;
     private bool exitcount = false; 
+    public Scrollbar scrollbar;
+    private int count = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,21 +25,28 @@ public class Menu : MonoBehaviour
     }
     public void escape()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)&&menucount==false)
+        if(Input.GetKeyDown(KeyCode.Escape)&&menucount==false&&count==-1)
         {
             Menus[0].SetActive(true);
             Menus[1].SetActive(false);
             Time.timeScale=0;
             menucount=true;
         } 
-        else if(Input.GetKeyDown(KeyCode.Escape)&&menucount==true)
+        else if(Input.GetKeyDown(KeyCode.Escape)&&menucount==true&&count==-1)
         {
             Menus[0].SetActive(false);
             Menus[1].SetActive(false);
             Time.timeScale=1;
             exitcount = false;
             menucount=false;
-        }              
+        }  
+        else if(Input.GetKeyDown(KeyCode.Escape)&&count!=-1)
+        {
+            Menus[2].SetActive(true);
+            Menus[3].SetActive(true);
+            Buttons[count].SetActive(false);    
+            count = -1; 
+        }       
     }
     public void Exit()
     {
@@ -49,5 +60,59 @@ public class Menu : MonoBehaviour
             Menus[1].SetActive(false);
             exitcount = false;
         }      
+    }
+    public void MenuMove()
+    {
+        Menus[2].transform.localPosition=new Vector3(0,scrollbar.value*420,0);  
+    }
+
+    public void Status()
+    {
+        count = 0;
+        Buttons[0].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
+    }
+
+    public void Equipment()
+    {
+        count = 1 ;
+        Buttons[1].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
+    }
+    public void Propos()
+    {
+        count = 2 ;
+        Buttons[2].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
+    }
+    public void Config()
+    {
+        count = 3 ;
+        Buttons[3].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
+    }
+    public void Save()
+    {
+        count = 4 ;
+        Buttons[4].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
+    }
+    public void Load()
+    {
+        count = 5 ;
+        Buttons[5].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(false);
     }
 }
