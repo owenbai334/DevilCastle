@@ -19,6 +19,7 @@ public class OrangeEnemy : MonoBehaviour
     public float hp = 100;
     private float TotalHp;
     public Slider hpSlider;
+    //掉落
     public static OrangeEnemy Instance;
     // Start is called before the first frame update
     void Start()
@@ -80,7 +81,7 @@ public class OrangeEnemy : MonoBehaviour
 
     void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D other)
     {

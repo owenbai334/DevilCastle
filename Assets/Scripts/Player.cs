@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public float hp = 100;
     private float TotalHp;
     public Slider hpSlider;
+    //狀態監控
     public Text[] Status; //0 hp,1 攻擊
     public static Player Instance;
     // Start is called before the first frame update
