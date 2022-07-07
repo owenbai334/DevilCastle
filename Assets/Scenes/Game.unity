@@ -1308,7 +1308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 201297153}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: Propos
+        m_MethodName: Loves
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2818,7 +2818,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 201297153}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: Equipment
+        m_MethodName: Bags
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,6 +12,16 @@ public class Menu : MonoBehaviour
     private bool exitcount = false; 
     public Scrollbar scrollbar;
     private int count = -1;
+    void Awake()
+    {
+        Menus[0].SetActive(true);
+        Bags();
+        Menus[2].SetActive(true);
+        Menus[3].SetActive(true);
+        Buttons[count].SetActive(false);    
+        count = -1;
+        Menus[0].SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -71,12 +81,12 @@ public class Menu : MonoBehaviour
         MenuClose();
     }
 
-    public void Equipment()
+    public void Bags()
     {
         count = 1 ;
         MenuClose();
     }
-    public void Propos()
+    public void Loves()
     {
         count = 2 ;
         MenuClose();
