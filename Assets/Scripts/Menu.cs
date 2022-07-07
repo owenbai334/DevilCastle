@@ -63,48 +63,42 @@ public class Menu : MonoBehaviour
         Menus[1].SetActive(false);
         Menus[2].SetActive(false);
         Menus[3].SetActive(false);
+        Buttons[count].SetActive(true);
     }
     public void Status()
     {
         count = 0;
-        Buttons[0].SetActive(true);
         MenuClose();
     }
 
     public void Equipment()
     {
         count = 1 ;
-        Buttons[1].SetActive(true);
         MenuClose();
     }
     public void Propos()
     {
         count = 2 ;
-        Buttons[2].SetActive(true);
         MenuClose();
     }
     public void Config()
     {
         count = 3 ;
-        Buttons[3].SetActive(true);
         MenuClose();
     }
     public void Save()
     {
         count = 4 ;
-        Buttons[4].SetActive(true);
         MenuClose();
     }
     public void Load()
     {
         count = 5 ;
-        Buttons[5].SetActive(true);
         MenuClose();
     }
     public void Tesk()
     {
         count = 6 ;
-        Buttons[6].SetActive(true);
         MenuClose();
     }
 }

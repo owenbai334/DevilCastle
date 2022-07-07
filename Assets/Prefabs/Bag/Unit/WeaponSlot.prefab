@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 4598505939452474840}
   - component: {fileID: 8855930160545355364}
   - component: {fileID: 6411023701253283492}
+  - component: {fileID: 8483329021144942851}
+  - component: {fileID: 4500918128776014399}
+  - component: {fileID: 2555666087908710448}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -103,6 +106,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8483329021144942851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38305895099422688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7125c79bfcce3d4abf01d309e1a322a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalParent: {fileID: 0}
+  bag: {fileID: 11400000, guid: 792a411b29674db41991e8fd7c5fd0c8, type: 2}
+--- !u!225 &4500918128776014399
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38305895099422688}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2555666087908710448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38305895099422688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1238794733402108784
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +166,7 @@ GameObject:
   - component: {fileID: -6468770609815914111}
   - component: {fileID: 4861883268596139704}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: WeaponSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49b6eaae6e07fa4893cdd9e25a15391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotId: 0
   slotItem: {fileID: 0}
   slotImage: {fileID: 8260338895832999678}
   slotNum: {fileID: 1238794734228723889}

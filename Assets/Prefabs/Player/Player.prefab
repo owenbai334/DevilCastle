@@ -551,6 +551,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a6ad59d48d1346342a5667e3ee5eab2f, type: 3}
   hp: 100
   hpSlider: {fileID: 1378990240}
+  Status:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!50 &748039137
 Rigidbody2D:
   serializedVersion: 4
