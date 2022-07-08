@@ -10,7 +10,8 @@ public class Item : ScriptableObject
     [TextArea]
     public string ItemInfo;
     public Sprite ItemImg;
-    public int IDtype ;
+    public int Itemdata;//物品數值(已ID來填)
+    public int IDtype ;//物品ID(看ItemType)
     public enum ItemType
     {
         Other = 0, //其他物品，既不能裝備，也無法消耗
@@ -18,7 +19,7 @@ public class Item : ScriptableObject
         BodyEquip = 11, //身體盔甲
         ShoeEquip = 12, //鞋子
         FarWeapon = 20, //遠程武器
-        CloseWeapon = 21, //進戰武器
+        CloseWeapon = 21, //近戰武器
         RingMagic = 22, //魔法戒指
         HpPotion = 30, //Hp藥水
         MpPotion = 31, //Mp藥水

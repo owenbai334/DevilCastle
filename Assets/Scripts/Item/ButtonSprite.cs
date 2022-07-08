@@ -9,6 +9,8 @@ public class ButtonSprite : MonoBehaviour
     public Sprite[] ButtonSprites;
     public Image[] ButtonRealSprites;
     public GameObject[] Grids; //0 裝備 ,2武器,4藥水,6其他
+    public Text Use;
+    public GameObject UseBtn;
     int CountGrid = 0;
     int Count = -1;
     void Awake()
@@ -46,21 +48,28 @@ public class ButtonSprite : MonoBehaviour
     public void OnClickEquipButton()
     {
         Count = 0 ;
+        UseBtn.SetActive(true);
+        Use.text = "裝備";
         Buttonsprite();
     }
     public void OnClickWeaponButton()
     {
         Count = 1 ;
+        UseBtn.SetActive(true);
+        Use.text = "裝備";
         Buttonsprite();
     }
     public void OnClickPotionButton()
     {
         Count = 2 ;
+        UseBtn.SetActive(true);
+        Use.text = "使用";
         Buttonsprite();
     }
     public void OnClickOtherButton()
     {
         Count = 3 ;
+        UseBtn.SetActive(false);
         Buttonsprite();
     }
     void Buttonsprite()

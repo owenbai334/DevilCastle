@@ -11,6 +11,8 @@ public class InventoryManager : MonoBehaviour
     //public Slot slotPrefab;
     public GameObject[] emptySlot;
     public Text ItemInfomation;
+    public Image Itemimg;
+    public Text[] ItemData; //0 ATK ,1 DEF,2 USE,3 NAME 
     public List<GameObject> slotsList = new List<GameObject>();
     int Id=0;
     void Awake()
@@ -28,7 +30,56 @@ public class InventoryManager : MonoBehaviour
     }
     public static void UpdateInfo(string itemInfo)
     {
-        instance.ItemInfomation.text = itemInfo;
+        instance.ItemInfomation.text = itemInfo;       
+    }
+    public static void AllInfo(int IDtype,int IDdata,string name ,Image img)
+    {
+        instance.ItemData[3].text = name;
+        instance.Itemimg.sprite = img.sprite;
+        if(IDtype==0)
+        {
+            instance.ItemData[0].text = "攻擊力:無攻擊力";
+            instance.ItemData[1].text = "防禦力:無防禦力";
+            instance.ItemData[2].text = "使用效果:無法使用";
+        }
+        else if(IDtype>=10&&IDtype<20)
+        {
+            instance.ItemData[0].text = "攻擊力:無攻擊力";
+            instance.ItemData[1].text = "防禦力:"+IDdata.ToString();
+            instance.ItemData[2].text = "使用效果:無法使用";
+        }
+        else if(IDtype>=20&&IDtype<30)
+        {
+            instance.ItemData[0].text = "攻擊力:"+IDdata.ToString();
+            instance.ItemData[1].text = "防禦力:無防禦力";
+            instance.ItemData[2].text = "使用效果:無法使用";
+        }
+        else if(IDtype>=30)
+        {
+            instance.ItemData[0].text = "攻擊力:無攻擊力";
+            instance.ItemData[1].text = "防禦力:無防禦力";
+            switch(IDtype)
+            {
+                case 30:
+                    instance.ItemData[2].text = "使用效果:使用後增加HP"+IDdata.ToString();
+                    break;
+                case 31:
+                    instance.ItemData[2].text = "使用效果:使用後增加MP"+IDdata.ToString();
+                    break;
+                case 32:
+                    instance.ItemData[2].text = "使用效果:使用後增加攻擊力"+IDdata.ToString();
+                    break;
+                case 33:
+                    instance.ItemData[2].text = "使用效果:使用後增加防禦力"+IDdata.ToString();
+                    break;
+                case 34:
+                    instance.ItemData[2].text = "使用效果:使用後無敵";
+                    break;
+                case 35:
+                    instance.ItemData[2].text = "使用效果:使用後速度"+IDdata.ToString();
+                    break;
+            }
+        }                             
     }
     // public static void CreateNewItem(Item item)
     // {

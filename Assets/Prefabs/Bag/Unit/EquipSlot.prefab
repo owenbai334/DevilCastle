@@ -246,8 +246,15 @@ MonoBehaviour:
   slotItem: {fileID: 0}
   slotImage: {fileID: 8260338895832999678}
   slotNum: {fileID: 1238794734228723889}
+  ItemData:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ItemInslot: {fileID: 38305895099422688}
   SlotInfo: 
+  SlotIdtype: 0
+  Slotvalue: 0
 --- !u!225 &4861883268596139704
 CanvasGroup:
   m_ObjectHideFlags: 0
