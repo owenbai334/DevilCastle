@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     private int count = -1;
     void Awake()
     {
+        Instance = this;
         Menus[0].SetActive(true);
         Bags();
         Menus[2].SetActive(true);
@@ -21,11 +22,6 @@ public class Menu : MonoBehaviour
         Buttons[count].SetActive(false);    
         count = -1;
         Menus[0].SetActive(false);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        Instance = this;
     }
 
     // Update is called once per frame

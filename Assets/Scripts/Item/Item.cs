@@ -10,7 +10,7 @@ public class Item : ScriptableObject
     [TextArea]
     public string ItemInfo;
     public Sprite ItemImg;
-    public int Itemdata;//物品數值(已ID來填)
+    public float Itemdata;//物品數值(已ID來填)
     public int IDtype ;//物品ID(看ItemType)
     public enum ItemType
     {
@@ -26,6 +26,8 @@ public class Item : ScriptableObject
         AtkPotion = 32, //Atk藥水
         DefPotion = 33, //Def藥水
         InvPotion = 34, //無敵藥水
-        SpeedPotion = 35 //速度藥水
+        SpeedPotion = 35, //速度藥水
+        MaxHpAddPotion = 36,//Hp最大值增加
+        MaxMpAddPotion = 37//Mp最大值增加
     }
 }

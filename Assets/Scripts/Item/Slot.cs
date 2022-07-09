@@ -11,13 +11,29 @@ public class Slot : MonoBehaviour
     public Text slotNum;
     public GameObject ItemInslot;
     public string SlotInfo;
-    public int SlotIdtype;
-    public int Slotvalue;
-    public string SlotName;
+    int SlotIdtype;
+    float Slotvalue;
+    public int slotNumber;
+    public string SlotName;  
+    private static Slot instance;
+    public static Slot Instance{
+        get
+        {
+            return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
     public void ItemOnclick()
     {
         InventoryManager.UpdateInfo(SlotInfo);
         InventoryManager.AllInfo(SlotIdtype,Slotvalue,SlotName,slotImage);
+        Player.ID = SlotIdtype;
+        Player.value = Slotvalue;
+        Player.thisItem = slotItem;
+        Player.itemnum = slotNum;
     }
     public void SetSlot(Item item)
     {
@@ -26,8 +42,14 @@ public class Slot : MonoBehaviour
             ItemInslot.SetActive(false);
             return;
         }
+        slotItem =item;
+        slotNumber = item.ItemNum;
         slotImage.sprite = item.ItemImg;
-        slotNum.text = item.ItemNum.ToString();
+        slotNum.text = slotNumber.ToString();
+        if((int)item.IDtype/10==1||(int)item.IDtype/10==2)
+        {
+            slotNum.text = null;
+        }
         SlotInfo = item.ItemInfo;
         SlotIdtype = item.IDtype;
         Slotvalue  =item.Itemdata;

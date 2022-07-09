@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     static InventoryManager instance;
+    static Player player;
     public Inventory[] bag;
     public GameObject[] slotGrid;
     //public Slot slotPrefab;
@@ -32,7 +33,7 @@ public class InventoryManager : MonoBehaviour
     {
         instance.ItemInfomation.text = itemInfo;       
     }
-    public static void AllInfo(int IDtype,int IDdata,string name ,Image img)
+    public static void AllInfo(int IDtype,float IDdata,string name ,Image img)
     {
         instance.ItemData[3].text = name;
         instance.Itemimg.sprite = img.sprite;
@@ -78,6 +79,12 @@ public class InventoryManager : MonoBehaviour
                 case 35:
                     instance.ItemData[2].text = "使用效果:使用後速度"+IDdata.ToString();
                     break;
+                case 36:
+                    instance.ItemData[2].text = "使用效果:使用後MaxHP增加"+IDdata.ToString();
+                    break;
+                case 37:
+                    instance.ItemData[2].text = "使用效果:使用後MaxMP增加"+IDdata.ToString();
+                    break;
             }
         }                             
     }
@@ -108,6 +115,7 @@ public class InventoryManager : MonoBehaviour
             instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[instance.Id].itemList[i]);
         }
     }
+        // n
     public static void AddNewItem(Item item)
     {
         switch((int)item.IDtype/10)
@@ -142,5 +150,41 @@ public class InventoryManager : MonoBehaviour
             item.ItemNum+=1;          
         }
         Refresh();     
+    }
+    public static void UseItem(Item item ,Text num)
+    {
+        if(item.ItemNum>1)
+        {
+            item.ItemNum-=1;
+            num.text = item.ItemNum.ToString();
+        }
+        else if (item.ItemNum<=1)
+        {
+            for(int i=0;i<instance.bag[3].itemList.Count;i++)
+            {
+
+                if(instance.bag[3].itemList[i]==item)
+                {
+                    instance.bag[3].itemList[i] = null;
+                    break;
+                }
+            }
+            for(int i=0;i<instance.slotGrid[3].transform.childCount;i++)
+            {
+                if(instance.slotGrid[3].transform.childCount==0)
+                {
+                    break;
+                }
+                Destroy(instance.slotGrid[3].transform.GetChild(i).gameObject);   
+                instance.slotsList.Clear();   
+            }
+            for(int i=0;i<instance.bag[3].itemList.Count;i++)
+            {
+                instance.slotsList.Add(Instantiate(instance.emptySlot[3]));
+                instance.slotsList[i].transform.SetParent(instance.slotGrid[3].transform);
+                instance.slotsList[i].GetComponent<Slot>().slotId = i;
+                instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[3].itemList[i]);
+            }
+        }  
     }
 }

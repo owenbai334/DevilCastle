@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
-{
-    //移動速度
-    public float moveSpeed = 10;
+{   
+    //使用物品
+    public static int ID;
+    public static float value; 
+    public static Item thisItem;
+    public static Text itemnum;
     //跳躍
     public float jumpSpeed = 100;
     private bool canJump = true;
@@ -24,12 +27,18 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     public Sprite[] PlayerSprites;
     //生命
-    public float hp = 100;
-    private float TotalHp;
-    public Slider hpSlider;
+    static float TotalHp;
+    public static Slider hpSlider;
     //狀態監控
-    public Text[] Status; //0 hp,1 攻擊
-    public static Player Instance;
+    public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp
+    //玩家數值
+    public float hp = 100;
+    public float mp = 100;
+    public float atk = 100;
+    public float def = 100;
+    public float moveSpeed = 10;
+    public bool isDefended= false;
+    static Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +122,10 @@ public class Player : MonoBehaviour
     public void Ondamage(float damage)
     {
         hp-=damage;
+        if(hp>=TotalHp)
+        {
+            hp=TotalHp;
+        }
         hpSlider.value =hp/TotalHp;
         Status[0].text = "HP:"+hp.ToString();
         if(hp<=0)
@@ -122,6 +135,60 @@ public class Player : MonoBehaviour
     }
     void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
+    }
+    public void ItemUse()
+    {
+        PlayerStatus(ID,value);
+        InventoryManager.UseItem(thisItem,itemnum);
+        // ID = 0;
+        // value = 0;
+        // thisItem = null;
+        // itemnum=null;
+    }
+    public void PlayerStatus(float Idtype,float value)
+    {
+        if(Idtype>=10&&Idtype<20)
+        { 
+            def+=value;
+            Status[2].text = "防禦力:"+def.ToString();
+            
+        }
+        else if(Idtype>=20&&Idtype<30)
+        {
+            atk += value;
+            Status[1].text = "攻擊力:"+atk.ToString();
+        }
+        else if(Idtype>=30)
+        {
+            switch(Idtype)
+            {
+                case 30:
+                    Ondamage(-value);
+                    break;
+                case 31:
+                    break;
+                case 32:
+                    atk += value;
+                    Status[1].text = "攻擊力:"+atk.ToString();
+                    break;
+                case 33:
+                    def += value;
+                    Status[2].text = "防禦力:"+def.ToString();
+                    break;
+                case 34:
+                    isDefended =true;
+                    break;
+                case 35:
+                    moveSpeed += value;
+                    break;
+                case 36:
+                    TotalHp += value;
+                    Ondamage(0);
+                    break;
+                case 37:
+                    break;
+            }
+        }
     }
 }
