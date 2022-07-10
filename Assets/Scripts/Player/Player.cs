@@ -140,11 +140,7 @@ public class Player : MonoBehaviour
     public void ItemUse()
     {
         PlayerStatus(ID,value);
-        InventoryManager.UseItem(thisItem,itemnum);
-        // ID = 0;
-        // value = 0;
-        // thisItem = null;
-        // itemnum=null;
+        InventoryManager.UseItem(thisItem,itemnum,ID);
     }
     public void PlayerStatus(float Idtype,float value)
     {

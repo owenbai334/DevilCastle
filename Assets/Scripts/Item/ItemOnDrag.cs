@@ -8,6 +8,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public Transform originalParent;
     public Inventory bag;
     int currentId;
+    public static int ID;
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;
@@ -30,12 +31,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.parent);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.parent.position; 
-            // if (eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId == currentId)
-            // {
-            //     return;
-            // }
-            // bag.itemList[eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId] = bag.itemList[currentId];
-            // bag.itemList[currentId] = null;
+
             var temp = bag.itemList[currentId] ;
             bag.itemList[currentId] = bag.itemList[eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId];
             bag.itemList[eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId] = temp;
@@ -49,10 +45,16 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.position;
+
             bag.itemList[eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId] = bag.itemList[currentId];
             if (eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<Slot>().slotId != currentId)
             {
                 bag.itemList[currentId] = null;
+            }
+            for(int i=0;i<4;i++)
+            {
+                InventoryManager.Id = i;
+                InventoryManager.Refresh();               
             }
             GetComponent<CanvasGroup>().blocksRaycasts = true;
             return;

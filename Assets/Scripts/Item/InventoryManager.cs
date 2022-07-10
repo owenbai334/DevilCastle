@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
     public Image Itemimg;
     public Text[] ItemData; //0 ATK ,1 DEF,2 USE,3 NAME 
     public List<GameObject> slotsList = new List<GameObject>();
-    int Id=0;
+    public static int Id;
     void Awake()
     {
         if(instance!=null)
@@ -97,22 +97,22 @@ public class InventoryManager : MonoBehaviour
     // }
     public static void Refresh()
     {
-        for(int i=0;i<instance.slotGrid[instance.Id].transform.childCount;i++)
+        for(int i=0;i<instance.slotGrid[Id].transform.childCount;i++)
         {
-            if(instance.slotGrid[instance.Id].transform.childCount==0)
+            if(instance.slotGrid[Id].transform.childCount==0)
             {
                 break;
             }
-            Destroy(instance.slotGrid[instance.Id].transform.GetChild(i).gameObject);   
+            Destroy(instance.slotGrid[Id].transform.GetChild(i).gameObject);   
             instance.slotsList.Clear();   
         }
-        for(int i=0;i<instance.bag[instance.Id].itemList.Count;i++)
+        for(int i=0;i<instance.bag[Id].itemList.Count;i++)
         {
             //CreateNewItem(instance.bag.itemList[i]);
-            instance.slotsList.Add(Instantiate(instance.emptySlot[instance.Id]));
-            instance.slotsList[i].transform.SetParent(instance.slotGrid[instance.Id].transform);
+            instance.slotsList.Add(Instantiate(instance.emptySlot[Id]));
+            instance.slotsList[i].transform.SetParent(instance.slotGrid[Id].transform);
             instance.slotsList[i].GetComponent<Slot>().slotId = i;
-            instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[instance.Id].itemList[i]);
+            instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[Id].itemList[i]);
         }
     }
         // n
@@ -121,26 +121,26 @@ public class InventoryManager : MonoBehaviour
         switch((int)item.IDtype/10)
         {
             case 0:
-                instance.Id = 0;
+                Id = 0;
                 break;
             case 1:
-                instance.Id = 1;
+                Id = 1;
                 break;
             case 2:
-                instance.Id = 2;
+                Id = 2;
                 break;
             case 3:
-                instance.Id = 3;
+                Id = 3;
                 break;
         }
-        if(!instance.bag[instance.Id].itemList.Contains(item))
+        if(!instance.bag[Id].itemList.Contains(item))
         {
             //instance.bag.itemList.Add(item);
-            for(int i=0;i<instance.bag[instance.Id].itemList.Count;i++)
+            for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
-                if(instance.bag[instance.Id].itemList[i]==null)
+                if(instance.bag[Id].itemList[i]==null)
                 {
-                    instance.bag[instance.Id].itemList[i] = item;
+                    instance.bag[Id].itemList[i] = item;
                     break;
                 }
             }
@@ -151,8 +151,20 @@ public class InventoryManager : MonoBehaviour
         }
         Refresh();     
     }
-    public static void UseItem(Item item ,Text num)
+    public static void UseItem(Item item ,Text num,int id)
     {
+        switch((int)item.IDtype/10)
+        {
+            case 1:
+                Id = 1;
+                break;
+            case 2:
+                Id = 2;
+                break;
+            case 3:
+                Id = 3;
+                break;
+        }
         if(item.ItemNum>1)
         {
             item.ItemNum-=1;
@@ -160,31 +172,16 @@ public class InventoryManager : MonoBehaviour
         }
         else if (item.ItemNum<=1)
         {
-            for(int i=0;i<instance.bag[3].itemList.Count;i++)
+            for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
 
-                if(instance.bag[3].itemList[i]==item)
+                if(instance.bag[Id].itemList[i]==item)
                 {
-                    instance.bag[3].itemList[i] = null;
+                    instance.bag[Id].itemList[i] = null;
                     break;
                 }
             }
-            for(int i=0;i<instance.slotGrid[3].transform.childCount;i++)
-            {
-                if(instance.slotGrid[3].transform.childCount==0)
-                {
-                    break;
-                }
-                Destroy(instance.slotGrid[3].transform.GetChild(i).gameObject);   
-                instance.slotsList.Clear();   
-            }
-            for(int i=0;i<instance.bag[3].itemList.Count;i++)
-            {
-                instance.slotsList.Add(Instantiate(instance.emptySlot[3]));
-                instance.slotsList[i].transform.SetParent(instance.slotGrid[3].transform);
-                instance.slotsList[i].GetComponent<Slot>().slotId = i;
-                instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[3].itemList[i]);
-            }
+            Refresh();
         }  
     }
 }
