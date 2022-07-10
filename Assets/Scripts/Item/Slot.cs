@@ -9,12 +9,19 @@ public class Slot : MonoBehaviour
     public Item slotItem;
     public Image slotImage;
     public Text slotNum;
+    public Text slotEquip;
     public GameObject ItemInslot;
     public string SlotInfo;
     int SlotIdtype;
     float Slotvalue;
     public int slotNumber;
     public string SlotName;  
+    public bool slotisHead;
+    public bool slotisBody;
+    public bool slotisShoose;
+    public bool slotisFar;
+    public bool slotisClose;
+    public bool slotisRing;
     private static Slot instance;
     public static Slot Instance{
         get
@@ -37,6 +44,7 @@ public class Slot : MonoBehaviour
     }
     public void SetSlot(Item item)
     {
+        
         if(item==null)
         {
             ItemInslot.SetActive(false);
@@ -48,11 +56,27 @@ public class Slot : MonoBehaviour
         slotNum.text = slotNumber.ToString();
         if((int)item.IDtype/10==1||(int)item.IDtype/10==2)
         {
-            slotNum.text = null;
+            slotNum.text = "";
         }
         SlotInfo = item.ItemInfo;
         SlotIdtype = item.IDtype;
         Slotvalue  =item.Itemdata;
         SlotName = item.Itemname;
+        slotisHead = item.isHead;
+        slotisBody = item.isBody;
+        slotisShoose = item.isShoose;
+        slotisFar = item.isFar;
+        slotisClose = item.isClose;
+        slotisRing = item.isRing;
+        if(slotisHead==false&&slotisBody==false&&slotisShoose==false&&slotisFar==false&&slotisClose==false&&slotisRing==false)
+        {
+            slotEquip.text="";
+            return;
+        }
+        if(slotisHead||slotisBody||slotisShoose||slotisFar||slotisClose||slotisRing)
+        {
+            slotEquip.text="裝備中";
+            return;
+        }
     }
 }

@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c215cc95c951748b0688a184833b3e, type: 3}
-  m_Name: Head
+  m_Name: Body
   m_EditorClassIdentifier: 
-  Itemname: "\u982D\u76D4"
-  ItemNum: 0
+  Itemname: "\u76D4\u7532"
+  ItemNum: 1
   ItemInfo: 
-  ItemImg: {fileID: 21300000, guid: fd6e4fc32c78509458fc45ea4a478ba8, type: 3}
+  ItemImg: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
   Itemdata: 0
-  IDtype: 10
-  isHead: 0
-  isBody: 0
-  isShoose: 0
-  isFar: 0
-  isClose: 0
-  isRing: 0
+  IDtype: 11
+  isEquip: 0

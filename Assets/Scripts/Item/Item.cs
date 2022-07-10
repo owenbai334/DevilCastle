@@ -12,6 +12,12 @@ public class Item : ScriptableObject
     public Sprite ItemImg;
     public float Itemdata;//物品數值(已ID來填)
     public int IDtype ;//物品ID(看ItemType)
+    public bool isHead=false;
+    public bool isBody=false;
+    public bool isShoose=false;
+    public bool isFar=false;
+    public bool isClose=false;
+    public bool isRing=false;
     public enum ItemType
     {
         Other = 0, //其他物品，既不能裝備，也無法消耗

@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     public Text ItemInfomation;
     public Image Itemimg;
     public Text[] ItemData; //0 ATK ,1 DEF,2 USE,3 NAME 
+    public Image[] Equips; //0近戰 ,1遠程,2戒指,3鞋子,4頭盔,5身體
     public List<GameObject> slotsList = new List<GameObject>();
     public static int Id;
     void Awake()
@@ -165,12 +166,13 @@ public class InventoryManager : MonoBehaviour
                 Id = 3;
                 break;
         }
-        if(item.ItemNum>1)
+        if(item.ItemNum>1&&Id==3)
         {
             item.ItemNum-=1;
             num.text = item.ItemNum.ToString();
+            return;
         }
-        else if (item.ItemNum<=1)
+        if (item.ItemNum<=1&&Id==3)
         {
             for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
@@ -182,6 +184,85 @@ public class InventoryManager : MonoBehaviour
                 }
             }
             Refresh();
+            return;
+        } 
+        else if(Id==1||Id==2)
+        {
+            for(int i=0;i<instance.bag[Id].itemList.Count;i++)
+            {
+                if(instance.bag[Id].itemList[i]==null)
+                {
+                    break;
+                }
+                switch(id)
+                {
+                    case 10:
+                        if(instance.bag[Id].itemList[i].isHead==true)
+                        {
+                            instance.bag[Id].itemList[i].isHead=false;
+                        }
+                        break;
+                    case 11:
+                        if(instance.bag[Id].itemList[i].isBody == true)
+                        {
+                            instance.bag[Id].itemList[i].isBody =false;
+                        }
+                        break;
+                    case 12:
+                        if(instance.bag[Id].itemList[i].isShoose == true)
+                        {
+                            instance.bag[Id].itemList[i].isShoose =false;
+                        }
+                        break;
+                    case 20:
+                        if(instance.bag[Id].itemList[i].isFar == true)
+                        {
+                            instance.bag[Id].itemList[i].isFar =false;
+                        }
+                        break;
+                    case 21:
+                        if(instance.bag[Id].itemList[i].isClose ==true)
+                        {
+                            instance.bag[Id].itemList[i].isClose =false;
+                        }
+                        break;
+                    case 22:
+                        if(instance.bag[Id].itemList[i].isRing == true)
+                        {
+                            instance.bag[Id].itemList[i].isRing = false;
+                        }
+                        break;
+                }
+            }
+            switch(id)
+            {
+                case 10:
+                    item.isHead=true;
+                    instance.Equips[4].sprite = item.ItemImg;
+                    break;
+                case 11:
+                    item.isBody=true;
+                    instance.Equips[5].sprite = item.ItemImg;
+                    break;
+                case 12:
+                    item.isShoose=true;
+                    instance.Equips[3].sprite = item.ItemImg;
+                    break;
+                case 20:
+                    item.isFar=true;
+                    instance.Equips[1].sprite = item.ItemImg;
+                    break;
+                case 21:
+                    item.isClose=true;
+                    instance.Equips[0].sprite = item.ItemImg;
+                    break;
+                case 22:
+                    item.isRing=true;
+                    instance.Equips[2].sprite = item.ItemImg;
+                    break;
+            }
+            Refresh();
+            
         }  
     }
 }

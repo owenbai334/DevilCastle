@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: EquipBag
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 86ec1ce913b74334b8633d106b24de2d, type: 2}
   - {fileID: 11400000, guid: 9c5aa1b37a6a4fc4c86ac54b891a5a42, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
