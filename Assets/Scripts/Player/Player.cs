@@ -10,6 +10,19 @@ public class Player : MonoBehaviour
     public static float value; 
     public static Item thisItem;
     public static Text itemnum;
+    //計算裝備數值
+    int countHead = 0;
+    float tempHead = 0;
+    int countBody = 0;
+    float tempBody = 0;
+    int countShoose = 0;
+    float tempShoose = 0;
+    int countFar =0;
+    float tempFar=0;
+    int countClose =0;
+    float tempClose=0;
+    int countRing =0;
+    float tempRing=0;
     //跳躍
     public float jumpSpeed = 100;
     private bool canJump = true;
@@ -146,14 +159,99 @@ public class Player : MonoBehaviour
     {
         if(Idtype>=10&&Idtype<20)
         { 
-            def+=value;
-            Status[2].text = "防禦力:"+def.ToString();
-            
+            switch(Idtype)
+            {
+                case 10:
+                    if(countHead==0)
+                    {
+                        tempHead = value;
+                    }
+                    else
+                    {
+                        def-=tempHead;
+                        countHead=-1;
+                    }
+                    def+=value; 
+                    Status[2].text = "防禦力:"+def.ToString(); 
+                    countHead++;               
+                    break;
+                case 11:
+                    if(countBody==0)
+                    {
+                        tempBody = value;
+                    }
+                    else
+                    {
+                        def-=tempBody;
+                        countBody=-1;
+                    }
+                    def+=value; 
+                    Status[2].text = "防禦力:"+def.ToString(); 
+                    countBody++;   
+                    break;
+                case 12:
+                    if(countShoose==0)
+                    {
+                        tempShoose = value;
+                    }
+                    else
+                    {
+                        def-=tempShoose;
+                        countShoose=-1;
+                    }
+                    def+=value; 
+                    Status[2].text = "防禦力:"+def.ToString(); 
+                    countShoose++; 
+                    break;
+            }      
         }
         else if(Idtype>=20&&Idtype<30)
         {
-            atk += value;
-            Status[1].text = "攻擊力:"+atk.ToString();
+            switch(Idtype)
+            {
+                case 20:
+                    if(countFar==0)
+                    {
+                        tempFar = value;
+                    }
+                    else
+                    {
+                        atk-=tempFar;
+                        countFar=-1;
+                    }
+                    atk+=value; 
+                    Status[1].text = "攻擊力:"+atk.ToString(); 
+                    countFar++; 
+                    break;
+                case 21:
+                    if(countClose==0)
+                    {
+                        tempClose = value;
+                    }
+                    else
+                    {
+                        atk-=tempClose;
+                        countClose=-1;
+                    }
+                    atk+=value; 
+                    Status[1].text = "攻擊力:"+atk.ToString(); 
+                    countClose++;
+                    break;
+                case 22:
+                    if(countRing==0)
+                    {
+                        tempRing = value;
+                    }
+                    else
+                    {
+                        atk-=tempRing;
+                        countRing=-1;
+                    }
+                    atk+=value; 
+                    Status[1].text = "攻擊力:"+atk.ToString(); 
+                    countRing++;
+                    break;
+            }
         }
         else if(Idtype>=30)
         {
