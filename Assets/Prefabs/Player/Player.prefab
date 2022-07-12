@@ -536,7 +536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22f43368800bfd419394ba7473a26b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
   jumpSpeed: 300
   farPrefab:
   - {fileID: 5574177991627017971, guid: 81c56d74109b0054597badd937d8cfee, type: 3}
@@ -549,11 +548,18 @@ MonoBehaviour:
   PlayerSprites:
   - {fileID: 21300000, guid: 5fabbd30f8ce86148bd47d00437163bf, type: 3}
   - {fileID: 21300000, guid: a6ad59d48d1346342a5667e3ee5eab2f, type: 3}
-  hp: 100
-  hpSlider: {fileID: 1378990240}
   Status:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hp: 100
+  mp: 100
+  atk: 20
+  def: 10
+  moveSpeed: 10
+  isDefended: 0
 --- !u!50 &748039137
 Rigidbody2D:
   serializedVersion: 4

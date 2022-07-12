@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float moveSpeed=10;
-    public float damage=10;
+    public float movespeed=10;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.up*moveSpeed*Time.deltaTime,Space.World);
+        transform.Translate(transform.up*movespeed*Time.deltaTime,Space.World);
     }
     void OnTriggerEnter2D(Collider2D col)
     {

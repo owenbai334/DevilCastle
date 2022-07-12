@@ -19,6 +19,7 @@ public class OrangeEnemy : MonoBehaviour
     public float hp = 100;
     private float TotalHp;
     public Slider hpSlider;
+    public Player player;
     //掉落
     public static OrangeEnemy Instance;
     // Start is called before the first frame update

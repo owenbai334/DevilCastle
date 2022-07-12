@@ -43,21 +43,27 @@ public class Player : MonoBehaviour
     static float TotalHp;
     public static Slider hpSlider;
     //狀態監控
-    public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp
+    public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度
     //玩家數值
     public float hp = 100;
     public float mp = 100;
-    public float atk = 100;
-    public float def = 100;
+    public float atk = 20;
+    public float def = 10;
     public float moveSpeed = 10;
     public bool isDefended= false;
-    static Player player;
+    public float Fardamage = 10;
+    public static Player Instance;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         TotalHp = hp;
         hpSlider = GetComponentInChildren<Slider>();
+        Status[0].text = "HP:"+hp.ToString();
+        Status[1].text = "攻擊力:"+atk.ToString();
+        Status[2].text = "防禦力:"+def.ToString();
+        Status[3].text = "mp:"+mp.ToString();
+        Status[4].text = "移動速度:"+moveSpeed.ToString();
     }
 
     // Update is called once per frame
@@ -100,7 +106,9 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            Instantiate(farPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles));
+            Ondamage(Fardamage);
+            Bullet bullet = Instantiate(farPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<Bullet>();
+            bullet.damage=atk;
             AttackTime = 0;
         }
     } 
@@ -196,11 +204,11 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        def-=tempShoose;
+                        moveSpeed-=tempShoose;
                         countShoose=-1;
                     }
-                    def+=value; 
-                    Status[2].text = "防禦力:"+def.ToString(); 
+                    moveSpeed+=value; 
+                    Status[4].text = "移動速度:"+moveSpeed.ToString(); 
                     countShoose++; 
                     break;
             }      

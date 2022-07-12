@@ -44,11 +44,17 @@ public class InventoryManager : MonoBehaviour
             instance.ItemData[1].text = "防禦力:無防禦力";
             instance.ItemData[2].text = "使用效果:無法使用";
         }
-        else if(IDtype>=10&&IDtype<20)
+        else if(IDtype==10||IDtype==11)
         {
             instance.ItemData[0].text = "攻擊力:無攻擊力";
             instance.ItemData[1].text = "防禦力:"+IDdata.ToString();
             instance.ItemData[2].text = "使用效果:無法使用";
+        }
+        else if(IDtype==12)
+        {
+            instance.ItemData[0].text = "攻擊力:無攻擊力";
+            instance.ItemData[1].text = "防禦力:無防禦力";
+            instance.ItemData[2].text = "使用效果:穿上之後+"+IDdata.ToString()+"移動速度";
         }
         else if(IDtype>=20&&IDtype<30)
         {
