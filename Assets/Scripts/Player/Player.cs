@@ -153,6 +153,10 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
+            if(mp<=0)
+            {
+                return;
+            }
             MpLose(MagicUse);
             MagicWeapon magicweapon = Instantiate(magicPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<MagicWeapon>();
             magicweapon.damage=atk;
@@ -185,12 +189,13 @@ public class Player : MonoBehaviour
         {
             mp=TotalMp;
         }
-        mpSlider.value = mp/TotalMp;
-        Status[3].text = "MP:"+mp.ToString();
-        if(mp<=0)
+        else if(mp<=0)
         {
             mp=0;
         }
+        mpSlider.value = mp/TotalMp;
+        Status[3].text = "MP:"+mp.ToString();
+        
     }
     void Die()
     {
