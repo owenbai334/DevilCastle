@@ -36,12 +36,16 @@ public class Player : MonoBehaviour
     private Vector3 closeEulerAngles;
     public Transform[] ClosePosition;
     private Transform RealPosition;
+    //魔法攻擊
+    public GameObject[] magicPrefab;
     //轉向
     private SpriteRenderer sr;
     public Sprite[] PlayerSprites;
     //生命
     static float TotalHp;
-    public static Slider hpSlider;
+    public Slider hpSlider;
+    float TotalMp;
+    public Slider mpSlider;
     //狀態監控
     public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度
     //玩家數值
@@ -52,12 +56,14 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10;
     public bool isDefended= false;
     public float Fardamage = 10;
+    public float MagicUse = 10;
     public static Player Instance;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         TotalHp = hp;
+        TotalMp = mp;
         hpSlider = GetComponentInChildren<Slider>();
         Status[0].text = "HP:"+hp.ToString();
         Status[1].text = "攻擊力:"+atk.ToString();
@@ -71,10 +77,11 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
-        CloseAttack();
         if(AttackTime>AttackTimeval)
         {
+            MagicAttack();
             FarAttack();
+            CloseAttack();
         }
         else{
             AttackTime += Time.deltaTime;
@@ -91,7 +98,7 @@ public class Player : MonoBehaviour
             RealPosition = ClosePosition[1];
             transform.Translate(new Vector3(-moveSpeed*Time.deltaTime,0,0),Space.World);
             farEulerAngles = new Vector3(0,0,90);
-            closeEulerAngles = new Vector3(0,0,180);
+            closeEulerAngles = new Vector3(0,180,0);
         }
         else if(Input.GetKey(KeyCode.D))
         {
@@ -106,7 +113,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            Ondamage(Fardamage);
+            Ondamage(TotalHp/2);
             Bullet bullet = Instantiate(farPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<Bullet>();
             bullet.damage=atk;
             AttackTime = 0;
@@ -137,11 +144,28 @@ public class Player : MonoBehaviour
     {
          if(Input.GetKeyDown(KeyCode.K))
         {
-            Instantiate(closePrefab[0],RealPosition.position,Quaternion.Euler(transform.eulerAngles+closeEulerAngles));
+            CloseWeapean closeweapean = Instantiate(closePrefab[0],RealPosition.position,Quaternion.Euler(transform.eulerAngles+closeEulerAngles)).GetComponent<CloseWeapean>();
+            closeweapean.damage=atk;
+            AttackTime=0;
+        }
+    }
+    void MagicAttack()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            MpLose(MagicUse);
+            MagicWeapon magicweapon = Instantiate(magicPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<MagicWeapon>();
+            magicweapon.damage=atk;
+            AttackTime=0;
         }
     }
     public void Ondamage(float damage)
     {
+        damage-=def;
+        if(damage<=0)
+        {
+            damage=0;
+        }
         hp-=damage;
         if(hp>=TotalHp)
         {
@@ -152,6 +176,20 @@ public class Player : MonoBehaviour
         if(hp<=0)
         {
             Die();
+        }
+    }
+    public void MpLose(float mplose)
+    {
+        mp-=mplose;
+        if(mp>=TotalMp)
+        {
+            mp=TotalMp;
+        }
+        mpSlider.value = mp/TotalMp;
+        Status[3].text = "MP:"+mp.ToString();
+        if(mp<=0)
+        {
+            mp=0;
         }
     }
     void Die()
@@ -269,6 +307,7 @@ public class Player : MonoBehaviour
                     Ondamage(-value);
                     break;
                 case 31:
+                    MpLose(-value);
                     break;
                 case 32:
                     atk += value;
@@ -289,6 +328,8 @@ public class Player : MonoBehaviour
                     Ondamage(0);
                     break;
                 case 37:
+                    TotalMp += value;
+                    MpLose(0);
                     break;
             }
         }

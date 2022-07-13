@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c215cc95c951748b0688a184833b3e, type: 3}
-  m_Name: Hp
+  m_Name: Head
   m_EditorClassIdentifier: 
-  Itemname: hp
-  ItemNum: 1
-  ItemInfo: "\u660F\u7761\u7D05\u8336"
-  ItemImg: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
-  Itemdata: 0
-  IDtype: 30
+  Itemname: "\u795E\u4E4B\u982D\u76D4"
+  ItemNum: 0
+  ItemInfo: "\u5F88\u53B2\u5BB3\u7684\u982D\u76D4\uFF0C\u50B3\u8AAA\u662F\u7531\u4E0B\u5317\u6FA4\u51FA\u4EE3\u738B\u6240\u88FD\u9020"
+  ItemImg: {fileID: 21300000, guid: fd6e4fc32c78509458fc45ea4a478ba8, type: 3}
+  Itemdata: 30
+  IDtype: 10
   isHead: 0
   isBody: 0
   isShoose: 0

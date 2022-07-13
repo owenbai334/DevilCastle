@@ -1801,10 +1801,14 @@ PrefabInstance:
       propertyPath: Status.Array.data[4]
       value: 
       objectReference: {fileID: 1369361189}
-    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: closePrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 2246489963829042180, guid: 734dc47a3c40c0c4391326f30e13b397, type: 3}
+    - target: {fileID: 7772306536325131798, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772306536325131798, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
 --- !u!1 &395361162
@@ -5192,7 +5196,7 @@ Transform:
   m_LocalScale: {x: 20.820047, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364551521
 GameObject:
@@ -8821,6 +8825,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -5643316213166488897, guid: 9063f1f7647f1f541ac0b00f5e39ee19, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -5643316213166488897, guid: 9063f1f7647f1f541ac0b00f5e39ee19, type: 3}
       propertyPath: mainItem
       value: 
       objectReference: {fileID: 0}
@@ -8842,7 +8850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3265834624005665959, guid: 9063f1f7647f1f541ac0b00f5e39ee19, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3265834624005665959, guid: 9063f1f7647f1f541ac0b00f5e39ee19, type: 3}
       propertyPath: m_LocalPosition.x

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseWeapean : MonoBehaviour
+public class MagicWeapon : MonoBehaviour
 {
+    public float movespeed=5;
     public float damage;
     void Update()
     {
-        transform.Rotate(0,0,-90*Time.deltaTime*4);
-        Die();
+        transform.Translate(transform.up*movespeed*Time.deltaTime,Space.World);
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -25,6 +25,6 @@ public class CloseWeapean : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject,0.4f);
+        Destroy(this.gameObject);
     }
 }
