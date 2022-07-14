@@ -14,6 +14,8 @@ public class Slot : MonoBehaviour
     public string SlotInfo;
     int SlotIdtype;
     float Slotvalue;
+    float SlotUseValue;
+    int SlotWeaponCount;
     public int slotNumber;
     public string SlotName;  
     public bool slotisHead;
@@ -41,6 +43,8 @@ public class Slot : MonoBehaviour
         Player.value = Slotvalue;
         Player.thisItem = slotItem;
         Player.itemnum = slotNum;
+        Player.usevalue = SlotUseValue;
+        Player.weaponcount = SlotWeaponCount;
     }
     public void SetSlot(Item item)
     {
@@ -59,9 +63,11 @@ public class Slot : MonoBehaviour
             slotNum.text = "";
         }
         SlotInfo = item.ItemInfo;
+        SlotWeaponCount = item.weaponCount;
         SlotIdtype = item.IDtype;
         Slotvalue  =item.Itemdata;
         SlotName = item.Itemname;
+        SlotUseValue = item.useValue;
         slotisHead = item.isHead;
         slotisBody = item.isBody;
         slotisShoose = item.isShoose;

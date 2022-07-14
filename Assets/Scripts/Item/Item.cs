@@ -12,6 +12,8 @@ public class Item : ScriptableObject
     public Sprite ItemImg;
     public float Itemdata;//物品數值(已ID來填)
     public int IDtype ;//物品ID(看ItemType)
+    public float useValue; //物品消耗hp或mp
+    public int weaponCount; //武器使用
     public bool isHead=false;
     public bool isBody=false;
     public bool isShoose=false;

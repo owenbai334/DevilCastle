@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public static Menu Instance;
-    public GameObject[] Menus; //0 暫停背景, 1 兩個退出按鈕,2 一般按鈕,3 滾輪
+    public GameObject[] Menus; //0 暫停背景, 1 兩個退出按鈕,2 一般按鈕,3 滾輪,4死亡
     public GameObject[] Buttons; //0 狀態,1 背包,2 好感度,3設定,4存檔,5讀檔,6任務
     private bool menucount = false;
     private bool exitcount = false; 

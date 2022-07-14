@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
                     instance.ItemData[2].text = "使用效果:使用後增加防禦力"+IDdata.ToString();
                     break;
                 case 34:
-                    instance.ItemData[2].text = "使用效果:使用後無敵";
+                    instance.ItemData[2].text = "使用效果:使用後無敵3秒鐘";
                     break;
                 case 35:
                     instance.ItemData[2].text = "使用效果:使用後速度"+IDdata.ToString();
@@ -271,4 +271,33 @@ public class InventoryManager : MonoBehaviour
             
         }  
     }
+    public static void TrashItem(Item item,int id)
+    {
+        switch((int)item.IDtype/10)
+        {
+            case 0:
+                Id = 0;
+                break;
+            case 1:
+                Id = 1;
+                break;
+            case 2:
+                Id = 2;
+                break;
+            case 3:
+                Id = 3;
+                break;
+        }
+        for(int i=0;i<instance.bag[Id].itemList.Count;i++)
+            {
+
+                if(instance.bag[Id].itemList[i]==item)
+                {
+                    instance.bag[Id].itemList[i] = null;
+                    break;
+                }
+            }
+        Refresh();
+    }
 }
+

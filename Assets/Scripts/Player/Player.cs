@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public static float value; 
     public static Item thisItem;
     public static Text itemnum;
+    public static float usevalue;
+    public static int weaponcount;
     //計算裝備數值
     int countHead = 0;
     float tempHead = 0;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     private Transform RealPosition;
     //魔法攻擊
     public GameObject[] magicPrefab;
+    //
     //轉向
     private SpriteRenderer sr;
     public Sprite[] PlayerSprites;
@@ -47,7 +50,18 @@ public class Player : MonoBehaviour
     float TotalMp;
     public Slider mpSlider;
     //狀態監控
-    public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度
+    public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度,5無敵狀態
+    //無敵狀態
+    public float Defendedtime=3;
+    float DefendedtimeVal=0;
+    //死亡
+    public GameObject[] Menus; //0 背景,1滾輪,2按鈕,3死亡
+    //武器使用數值
+    public float Fardamage = 0;
+    public float MagicUse = 0;
+    public int Farcount = 0;
+    public int CloseCount = 0;
+    public int MagicCount = 0;
     //玩家數值
     public float hp = 100;
     public float mp = 100;
@@ -55,8 +69,6 @@ public class Player : MonoBehaviour
     public float def = 10;
     public float moveSpeed = 10;
     public bool isDefended= false;
-    public float Fardamage = 10;
-    public float MagicUse = 10;
     public static Player Instance;
     // Start is called before the first frame update
     void Start()
@@ -70,6 +82,7 @@ public class Player : MonoBehaviour
         Status[2].text = "防禦力:"+def.ToString();
         Status[3].text = "mp:"+mp.ToString();
         Status[4].text = "移動速度:"+moveSpeed.ToString();
+        Status[5].text = "無敵狀態:無";
     }
 
     // Update is called once per frame
@@ -77,18 +90,34 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+        if(isDefended)
+        {
+            Defended();
+        }
         if(AttackTime>AttackTimeval)
         {
             MagicAttack();
             FarAttack();
             CloseAttack();
         }
-        else{
+        else
+        {
             AttackTime += Time.deltaTime;
         }  
         
     }
-
+    void Defended()
+    {
+        if(DefendedtimeVal>=Defendedtime)
+        {
+            DefendedtimeVal=0;
+            isDefended=false;
+        }
+        else
+        {
+            DefendedtimeVal+=Time.deltaTime;
+        }
+    }
     void Move()
     {
         if(Input.GetKey(KeyCode.A))
@@ -113,8 +142,12 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            Ondamage(TotalHp/2);
-            Bullet bullet = Instantiate(farPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<Bullet>();
+            if(Fardamage==0)
+            {
+                return;
+            }
+            Ondamage(Fardamage);
+            Bullet bullet = Instantiate(farPrefab[Farcount],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<Bullet>();
             bullet.damage=atk;
             AttackTime = 0;
         }
@@ -144,7 +177,7 @@ public class Player : MonoBehaviour
     {
          if(Input.GetKeyDown(KeyCode.K))
         {
-            CloseWeapean closeweapean = Instantiate(closePrefab[0],RealPosition.position,Quaternion.Euler(transform.eulerAngles+closeEulerAngles)).GetComponent<CloseWeapean>();
+            CloseWeapean closeweapean = Instantiate(closePrefab[CloseCount],RealPosition.position,Quaternion.Euler(transform.eulerAngles+closeEulerAngles)).GetComponent<CloseWeapean>();
             closeweapean.damage=atk;
             AttackTime=0;
         }
@@ -157,14 +190,22 @@ public class Player : MonoBehaviour
             {
                 return;
             }
+            if(MagicUse==0)
+            {
+                return;
+            }
             MpLose(MagicUse);
-            MagicWeapon magicweapon = Instantiate(magicPrefab[0],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<MagicWeapon>();
+            MagicWeapon magicweapon = Instantiate(magicPrefab[MagicCount],transform.position,Quaternion.Euler(transform.eulerAngles+farEulerAngles)).GetComponent<MagicWeapon>();
             magicweapon.damage=atk;
             AttackTime=0;
         }
     }
     public void Ondamage(float damage)
     {
+        if(isDefended)
+        {
+            return;
+        }
         damage-=def;
         if(damage<=0)
         {
@@ -199,14 +240,23 @@ public class Player : MonoBehaviour
     }
     void Die()
     {
+        Time.timeScale=0;
+        Menus[0].SetActive(true);
+        Menus[1].SetActive(false);
+        Menus[2].SetActive(false);
+        Menus[3].SetActive(true);
         Destroy(gameObject);
     }
     public void ItemUse()
     {
-        PlayerStatus(ID,value);
+        PlayerStatus(ID,value,usevalue,weaponcount);
         InventoryManager.UseItem(thisItem,itemnum,ID);
     }
-    public void PlayerStatus(float Idtype,float value)
+    public void ItemTrash()
+    {
+        InventoryManager.TrashItem(thisItem,ID);
+    }
+    public void PlayerStatus(float Idtype,float value,float usevalue,int weaponcount)
     {
         if(Idtype>=10&&Idtype<20)
         { 
@@ -271,6 +321,8 @@ public class Player : MonoBehaviour
                         countFar=-1;
                     }
                     atk+=value; 
+                    Fardamage = usevalue;
+                    Farcount = weaponcount;
                     Status[1].text = "攻擊力:"+atk.ToString(); 
                     countFar++; 
                     break;
@@ -285,6 +337,7 @@ public class Player : MonoBehaviour
                         countClose=-1;
                     }
                     atk+=value; 
+                    CloseCount = weaponcount;
                     Status[1].text = "攻擊力:"+atk.ToString(); 
                     countClose++;
                     break;
@@ -298,6 +351,8 @@ public class Player : MonoBehaviour
                         atk-=tempRing;
                         countRing=-1;
                     }
+                    MagicUse = usevalue;
+                    MagicCount = weaponcount;
                     atk+=value; 
                     Status[1].text = "攻擊力:"+atk.ToString(); 
                     countRing++;
@@ -323,6 +378,7 @@ public class Player : MonoBehaviour
                     Status[2].text = "防禦力:"+def.ToString();
                     break;
                 case 34:
+                    Status[5].text = "無敵狀態:有";
                     isDefended =true;
                     break;
                 case 35:
