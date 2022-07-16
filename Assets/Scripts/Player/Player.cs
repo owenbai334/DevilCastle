@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     private Transform RealPosition;
     //魔法攻擊
     public GameObject[] magicPrefab;
-    //
     //轉向
     private SpriteRenderer sr;
     public Sprite[] PlayerSprites;

@@ -26,9 +26,7 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(eventData.pointerCurrentRaycast.gameObject.name !=null)
-        {
-            if(eventData.pointerCurrentRaycast.gameObject.name == "ItemImage")
+        if(eventData.pointerCurrentRaycast.gameObject.name == "ItemImage")
         {
 
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.parent);
@@ -60,7 +58,6 @@ public class ItemOnDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             }
             GetComponent<CanvasGroup>().blocksRaycasts = true;
             return;
-        }
         }
         transform.SetParent(originalParent);
         transform.position = originalParent.position;
