@@ -157,18 +157,31 @@ public class Player : MonoBehaviour
         {
             if(canJump)
             {
-                canJump=false;
                 transform.Translate(0,jumpSpeed*Time.deltaTime,0);
             }           
         }
     }
-
     void OnCollisionEnter2D(Collision2D other)
     {
         switch(other.gameObject.tag)
         {
             case "Floor":
                 canJump=true;         
+                break;
+            case "Ice":
+                moveSpeed/=2;
+                break;
+        }
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        switch(other.gameObject.tag)
+        {
+            case "Floor":
+                canJump=false;         
+                break;
+            case "Ice":
+                moveSpeed*=2;
                 break;
         }
     }

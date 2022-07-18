@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Charator
   - Map
+  - Ice
   layers:
   - Default
   - TransparentFX
