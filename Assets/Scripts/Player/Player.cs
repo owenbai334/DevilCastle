@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
         Status[3].text = "MP:"+mp.ToString();
         
     }
-    void Die()
+    public void Die()
     {
         Time.timeScale=0;
         Menus[0].SetActive(true);
