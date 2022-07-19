@@ -169,7 +169,8 @@ public class Player : MonoBehaviour
                 canJump=true;         
                 break;
             case "Ice":
-                moveSpeed/=2;
+                canJump=true; 
+                moveSpeed*=2;
                 break;
         }
     }
@@ -181,7 +182,8 @@ public class Player : MonoBehaviour
                 canJump=false;         
                 break;
             case "Ice":
-                moveSpeed*=2;
+                canJump=false; 
+                moveSpeed/=2;
                 break;
         }
     }
