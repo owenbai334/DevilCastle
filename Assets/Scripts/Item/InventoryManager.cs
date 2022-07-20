@@ -9,7 +9,6 @@ public class InventoryManager : MonoBehaviour
     static Player player;
     public Inventory[] bag;
     public GameObject[] slotGrid;
-    //public Slot slotPrefab;
     public GameObject[] emptySlot;
     public Text ItemInfomation;
     public Image Itemimg;
@@ -95,13 +94,6 @@ public class InventoryManager : MonoBehaviour
             }
         }                             
     }
-    // public static void CreateNewItem(Item item)
-    // {
-    //     Slot newItem = Instantiate(instance.slotPrefab,instance.slotGrid.transform); 
-    //     newItem.slotItem = item;
-    //     newItem.slotImage.sprite = item.ItemImg;
-    //     newItem.slotNum.text = item.ItemNum.ToString();
-    // }
     public static void Refresh()
     {
         for(int i=0;i<instance.slotGrid[Id].transform.childCount;i++)
@@ -115,7 +107,6 @@ public class InventoryManager : MonoBehaviour
         }
         for(int i=0;i<instance.bag[Id].itemList.Count;i++)
         {
-            //CreateNewItem(instance.bag.itemList[i]);
             instance.slotsList.Add(Instantiate(instance.emptySlot[Id]));
             instance.slotsList[i].transform.SetParent(instance.slotGrid[Id].transform);
             instance.slotsList[i].GetComponent<Slot>().slotId = i;

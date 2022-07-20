@@ -5,6 +5,21 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {   
+    [System.Serializable]
+    class SaveData
+    {
+        public float playerhp;
+        public float playermp;
+        public float playeratk;
+        public float playerdef;
+        public float playermoveSpeed;
+        public bool playerisDefended;
+        public Vector3 playerposition;
+        public Image[] Equips; //0近戰 ,1遠程,2戒指,3鞋子,4頭盔,5身體
+        public Inventory[] bag;//0其他,1裝備,武器,3消耗品
+
+    }
+    const string PLAYER_DATA_KEY = "PlayerData";
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -419,20 +434,33 @@ public class Player : MonoBehaviour
     #region PlayerPrefs
     void SaveByPlayerPrefs()
     {
-        PlayerPrefs.SetFloat("hp",hp);
-        PlayerPrefs.SetFloat("mp",mp);
-        PlayerPrefs.SetFloat("atk",atk);
-        PlayerPrefs.SetFloat("def",def);
-        PlayerPrefs.SetFloat("moveSpeed",moveSpeed);
-        PlayerPrefs.Save();
+        var SaveData = new SaveData();
+        SaveData.playerhp=hp;
+        SaveData.playermp=mp;
+        SaveData.playeratk=atk;
+        SaveData.playerdef=def;
+        SaveData.playermoveSpeed=moveSpeed;
+        SaveData.playerisDefended=isDefended;
+        SaveData.playerposition=transform.position;
+        SaveSystem.SaveByPlayerPref(PLAYER_DATA_KEY,SaveData);
     }
     void LoadByPlayerPrefs()
     {
-        hp = PlayerPrefs.GetFloat("hp",0);
-        mp = PlayerPrefs.GetFloat("mp",mp);
-        atk = PlayerPrefs.GetFloat("atk",atk);
-        def = PlayerPrefs.GetFloat("def",def);
-        moveSpeed = PlayerPrefs.GetFloat("moveSpeed",moveSpeed);
+        var json = SaveSystem.LoadByPlayerPref(PLAYER_DATA_KEY);
+        var SaveData =JsonUtility.FromJson<SaveData>(json);
+
+        hp = SaveData.playerhp;
+        mp = SaveData.playermp;
+        atk = SaveData.playeratk;
+        def = SaveData.playerdef;
+        moveSpeed = SaveData.playermoveSpeed;
+        isDefended = SaveData.playerisDefended;
+        transform.position = SaveData.playerposition;
+    }
+    [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
+    public static void DeleteDataPref()
+    {
+        PlayerPrefs.DeleteAll();
     }
     #endregion
 }
