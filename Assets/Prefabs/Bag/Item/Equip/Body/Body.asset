@@ -18,8 +18,10 @@ MonoBehaviour:
   ItemImg: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
   Itemdata: 0
   IDtype: 11
+  useValue: 0
+  weaponCount: 0
   isHead: 0
-  isBody: 0
+  isBody: 1
   isShoose: 0
   isFar: 0
   isClose: 0

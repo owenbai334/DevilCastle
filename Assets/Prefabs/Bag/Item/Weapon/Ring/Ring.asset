@@ -25,4 +25,4 @@ MonoBehaviour:
   isShoose: 0
   isFar: 0
   isClose: 0
-  isRing: 0
+  isRing: 1

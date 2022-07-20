@@ -8,10 +8,13 @@ public class Menu : MonoBehaviour
     public static Menu Instance;
     public GameObject[] Menus; //0 暫停背景, 1 兩個退出按鈕,2 一般按鈕,3 滾輪,4死亡
     public GameObject[] Buttons; //0 狀態,1 背包,2 好感度,3設定,4存檔,5讀檔,6任務
+    public Button save;
+    public Button load;
     private bool menucount = false;
     private bool exitcount = false; 
     public Scrollbar scrollbar;
     private int count = -1;
+    public Player player;
     void Awake()
     {
         Instance = this;
@@ -22,6 +25,8 @@ public class Menu : MonoBehaviour
         Buttons[count].SetActive(false);    
         count = -1;
         Menus[0].SetActive(false);
+        save.onClick.AddListener(() => player.Save());
+        load.onClick.AddListener(() => player.Load());
     }
 
     // Update is called once per frame
@@ -90,16 +95,6 @@ public class Menu : MonoBehaviour
     public void Config()
     {
         count = 3 ;
-        MenuClose();
-    }
-    public void Save()
-    {
-        count = 4 ;
-        MenuClose();
-    }
-    public void Load()
-    {
-        count = 5 ;
         MenuClose();
     }
     public void Tesk()

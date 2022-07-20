@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {   
-    //使用物品
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -27,7 +26,7 @@ public class Player : MonoBehaviour
     float tempRing=0;
     //跳躍
     public float jumpSpeed = 100;
-    private bool canJump = true;
+    bool canJump = true;
     //遠程攻擊
     public GameObject[] farPrefab;
     private Vector3 farEulerAngles;
@@ -55,12 +54,11 @@ public class Player : MonoBehaviour
     float DefendedtimeVal=0;
     //死亡
     public GameObject[] Menus; //0 背景,1滾輪,2按鈕,3死亡
-    //武器使用數值
-    public float Fardamage = 0;
-    public float MagicUse = 0;
-    public int Farcount = 0;
-    public int CloseCount = 0;
-    public int MagicCount = 0;
+    float Fardamage = 0;
+    float MagicUse = 0;
+    int Farcount = 0;
+    int CloseCount = 0;
+    int MagicCount = 0;
     //玩家數值
     public float hp = 100;
     public float mp = 100;
@@ -409,4 +407,32 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void Save()
+    {
+        SaveByPlayerPrefs();
+    }
+    public void Load()
+    {
+        LoadByPlayerPrefs();
+        Start();
+    }
+    #region PlayerPrefs
+    void SaveByPlayerPrefs()
+    {
+        PlayerPrefs.SetFloat("hp",hp);
+        PlayerPrefs.SetFloat("mp",mp);
+        PlayerPrefs.SetFloat("atk",atk);
+        PlayerPrefs.SetFloat("def",def);
+        PlayerPrefs.SetFloat("moveSpeed",moveSpeed);
+        PlayerPrefs.Save();
+    }
+    void LoadByPlayerPrefs()
+    {
+        hp = PlayerPrefs.GetFloat("hp",0);
+        mp = PlayerPrefs.GetFloat("mp",mp);
+        atk = PlayerPrefs.GetFloat("atk",atk);
+        def = PlayerPrefs.GetFloat("def",def);
+        moveSpeed = PlayerPrefs.GetFloat("moveSpeed",moveSpeed);
+    }
+    #endregion
 }

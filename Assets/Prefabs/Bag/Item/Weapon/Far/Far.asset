@@ -23,6 +23,6 @@ MonoBehaviour:
   isHead: 0
   isBody: 0
   isShoose: 0
-  isFar: 0
+  isFar: 1
   isClose: 0
   isRing: 0
