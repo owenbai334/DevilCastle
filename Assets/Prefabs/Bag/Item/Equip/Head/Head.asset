@@ -20,7 +20,7 @@ MonoBehaviour:
   IDtype: 10
   useValue: 0
   weaponCount: 0
-  isHead: 1
+  isHead: 0
   isBody: 0
   isShoose: 0
   isFar: 0

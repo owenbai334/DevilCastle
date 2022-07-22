@@ -21,7 +21,7 @@ MonoBehaviour:
   useValue: 0
   weaponCount: 0
   isHead: 0
-  isBody: 1
+  isBody: 0
   isShoose: 0
   isFar: 0
   isClose: 0

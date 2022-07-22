@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,11 +16,9 @@ public class Player : MonoBehaviour
         public float playermoveSpeed;
         public bool playerisDefended;
         public Vector3 playerposition;
-        public Image[] Equips; //0近戰 ,1遠程,2戒指,3鞋子,4頭盔,5身體
-        public Inventory[] bag;//0其他,1裝備,武器,3消耗品
-
     }
     const string PLAYER_DATA_KEY = "PlayerData";
+    const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -170,6 +169,7 @@ public class Player : MonoBehaviour
         {
             if(canJump)
             {
+                canJump=false; 
                 transform.Translate(0,jumpSpeed*Time.deltaTime,0);
             }           
         }
@@ -191,11 +191,7 @@ public class Player : MonoBehaviour
     {
         switch(other.gameObject.tag)
         {
-            case "Floor":
-                canJump=false;         
-                break;
             case "Ice":
-                canJump=false; 
                 moveSpeed/=2;
                 break;
         }
@@ -283,6 +279,7 @@ public class Player : MonoBehaviour
     {
         InventoryManager.TrashItem(thisItem,ID);
     }
+    #region "使用物品後狀態"
     public void PlayerStatus(float Idtype,float value,float usevalue,int weaponcount)
     {
         if(Idtype>=10&&Idtype<20)
@@ -292,11 +289,13 @@ public class Player : MonoBehaviour
                 case 10:
                     if(countHead==0)
                     {
+                        def-=tempHead;
                         tempHead = value;
                     }
                     else
                     {
                         def-=tempHead;
+                        tempHead = value;
                         countHead=-1;
                     }
                     def+=value; 
@@ -306,11 +305,13 @@ public class Player : MonoBehaviour
                 case 11:
                     if(countBody==0)
                     {
+                        def-=tempBody;
                         tempBody = value;
                     }
                     else
                     {
                         def-=tempBody;
+                        tempBody = value;
                         countBody=-1;
                     }
                     def+=value; 
@@ -320,11 +321,13 @@ public class Player : MonoBehaviour
                 case 12:
                     if(countShoose==0)
                     {
-                        tempShoose = value;
+                        moveSpeed-=tempShoose;
+                        tempShoose = value;                        
                     }
                     else
                     {
                         moveSpeed-=tempShoose;
+                        tempShoose = value;
                         countShoose=-1;
                     }
                     moveSpeed+=value; 
@@ -340,11 +343,13 @@ public class Player : MonoBehaviour
                 case 20:
                     if(countFar==0)
                     {
+                        atk-=tempFar;
                         tempFar = value;
                     }
                     else
                     {
                         atk-=tempFar;
+                        tempFar=value;
                         countFar=-1;
                     }
                     atk+=value; 
@@ -356,11 +361,12 @@ public class Player : MonoBehaviour
                 case 21:
                     if(countClose==0)
                     {
-                        tempClose = value;
-                    }
+                        atk-=tempClose;
+                        tempClose = value;                    }
                     else
                     {
                         atk-=tempClose;
+                        tempClose=value;
                         countClose=-1;
                     }
                     atk+=value; 
@@ -371,11 +377,13 @@ public class Player : MonoBehaviour
                 case 22:
                     if(countRing==0)
                     {
+                        atk-=tempRing;
                         tempRing = value;
                     }
                     else
                     {
                         atk-=tempRing;
+                        tempRing = value;
                         countRing=-1;
                     }
                     MagicUse = usevalue;
@@ -422,17 +430,33 @@ public class Player : MonoBehaviour
             }
         }
     }
+    #endregion
     public void Save()
     {
-        SaveByPlayerPrefs();
+        SaveMyJson();
     }
     public void Load()
     {
-        LoadByPlayerPrefs();
+        LoadMyJson();
         Start();
     }
-    #region PlayerPrefs
-    void SaveByPlayerPrefs()
+
+    #region "json"
+
+    void SaveMyJson()
+    {
+        SaveSystem.SaveByjson(PLAYER_DATA_KEY,SavingData());
+    }
+    void LoadMyJson()
+    {
+        var SaveData = SaveSystem.LoadFromJson<SaveData>(PLAYER_DATA_FILE_NAME);
+        LoadData(SaveData);
+
+    }
+    #endregion
+
+    #region "存檔幫助"
+    SaveData SavingData()
     {
         var SaveData = new SaveData();
         SaveData.playerhp=hp;
@@ -441,26 +465,28 @@ public class Player : MonoBehaviour
         SaveData.playerdef=def;
         SaveData.playermoveSpeed=moveSpeed;
         SaveData.playerisDefended=isDefended;
-        SaveData.playerposition=transform.position;
-        SaveSystem.SaveByPlayerPref(PLAYER_DATA_KEY,SaveData);
+        SaveData.playerposition=transform.position;           
+        return SaveData;
     }
-    void LoadByPlayerPrefs()
+    void LoadData(SaveData saveData)
     {
-        var json = SaveSystem.LoadByPlayerPref(PLAYER_DATA_KEY);
-        var SaveData =JsonUtility.FromJson<SaveData>(json);
-
-        hp = SaveData.playerhp;
-        mp = SaveData.playermp;
-        atk = SaveData.playeratk;
-        def = SaveData.playerdef;
-        moveSpeed = SaveData.playermoveSpeed;
-        isDefended = SaveData.playerisDefended;
-        transform.position = SaveData.playerposition;
+        hp = saveData.playerhp;
+        mp = saveData.playermp;
+        atk = saveData.playeratk;
+        def = saveData.playerdef;
+        moveSpeed = saveData.playermoveSpeed;
+        isDefended = saveData.playerisDefended;
+        transform.position = saveData.playerposition;
     }
-    [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
+    [UnityEditor.MenuItem("Developer/Delete Player DataPrefs")]
     public static void DeleteDataPref()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey(PLAYER_DATA_KEY);
+    }
+    [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
+    public static void DeleteDataJson()
+    {
+        SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
     }
     #endregion
 }

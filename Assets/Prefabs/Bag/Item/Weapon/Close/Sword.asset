@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c215cc95c951748b0688a184833b3e, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  Itemname: "\u9ED1\u8056\u528D"
+  Itemname: "\u528D"
   ItemNum: 0
-  ItemInfo: "\u53EA\u6709\u50B3\u8AAA\u4E2D\u7684\u52C7\u8005\u624D\u80FD\u62FF\u8D77\u7684\u528D"
+  ItemInfo: "\u8D85\u5F37"
   ItemImg: {fileID: 21300000, guid: 5fd50594014b70e48bd6993443d46b32, type: 3}
-  Itemdata: 0
+  Itemdata: 10
   IDtype: 21
   useValue: 0
   weaponCount: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
   isBody: 0
   isShoose: 0
   isFar: 0
-  isClose: 0
+  isClose: 1
   isRing: 0
