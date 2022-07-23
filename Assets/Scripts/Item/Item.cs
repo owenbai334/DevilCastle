@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 [CreateAssetMenu(fileName ="New Item",menuName ="Inventory/NewItem")]
+[Serializable]
 public class Item : ScriptableObject
 {
     public string Itemname;
