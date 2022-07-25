@@ -451,7 +451,7 @@ public class Player : MonoBehaviour
     {
         var SaveData = SaveSystem.LoadFromJson<SaveData>(PLAYER_DATA_FILE_NAME);
         LoadData(SaveData);
-
+        InventoryManager.Refresh();  
     }
     #endregion
 

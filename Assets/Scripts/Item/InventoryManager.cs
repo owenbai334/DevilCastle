@@ -96,21 +96,24 @@ public class InventoryManager : MonoBehaviour
     }
     public static void Refresh()
     {
-        for(int i=0;i<instance.slotGrid[Id].transform.childCount;i++)
+        for(int j=0;j<3;j++)
         {
-            if(instance.slotGrid[Id].transform.childCount==0)
+            for(int i=0;i<instance.slotGrid[j].transform.childCount;i++)
             {
-                break;
+                if(instance.slotGrid[j].transform.childCount==0)
+                {
+                    break;
+                }
+                Destroy(instance.slotGrid[j].transform.GetChild(i).gameObject);   
+                instance.slotsList.Clear();   
             }
-            Destroy(instance.slotGrid[Id].transform.GetChild(i).gameObject);   
-            instance.slotsList.Clear();   
-        }
-        for(int i=0;i<instance.bag[Id].itemList.Count;i++)
-        {
-            instance.slotsList.Add(Instantiate(instance.emptySlot[Id]));
-            instance.slotsList[i].transform.SetParent(instance.slotGrid[Id].transform);
-            instance.slotsList[i].GetComponent<Slot>().slotId = i;
-            instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[Id].itemList[i]);
+            for(int i=0;i<instance.bag[j].itemList.Count;i++)
+            {
+                instance.slotsList.Add(Instantiate(instance.emptySlot[j]));
+                instance.slotsList[i].transform.SetParent(instance.slotGrid[j].transform);
+                instance.slotsList[i].GetComponent<Slot>().slotId = i;
+                instance.slotsList[i].GetComponent<Slot>().SetSlot(instance.bag[j].itemList[i]);
+            }
         }
     }
         // n
