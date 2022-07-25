@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PotionBag
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 11400000, guid: 990e55775fa14af45b4a4cdb9379643e, type: 2}
   - {fileID: 11400000, guid: 5bfb23b24d5b8b84abf758550950a2ea, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -17,10 +17,10 @@ public class GameSaveManager:MonoBehaviour
 
 		BinaryFormatter formatter = new BinaryFormatter();//二进制序列化
 
-		FileStream fileOther = File.Create(Application.persistentDataPath + "/game_SaveData/bagOther.txt");//创建存储文件inventory
-        FileStream fileEquip = File.Create(Application.persistentDataPath + "/game_SaveData/bagEquip.txt");//创建存储文件inventory
-        FileStream fileWeapon = File.Create(Application.persistentDataPath + "/game_SaveData/bagWeapon.txt");//创建存储文件inventory
-        FileStream filePotion = File.Create(Application.persistentDataPath + "/game_SaveData/bagPotion.txt");//创建存储文件inventory
+		FileStream fileOther = File.Create(Application.persistentDataPath + "/game_SaveData/bagOther.game");//创建存储文件inventory
+        FileStream fileEquip = File.Create(Application.persistentDataPath + "/game_SaveData/bagEquip.game");//创建存储文件inventory
+        FileStream fileWeapon = File.Create(Application.persistentDataPath + "/game_SaveData/bagWeapon.game");//创建存储文件inventory
+        FileStream filePotion = File.Create(Application.persistentDataPath + "/game_SaveData/bagPotion.game");//创建存储文件inventory
 
 		var jsonOther = JsonUtility.ToJson(myInventorys[0]);//将ScriptableObject(只读)转换为Json存储方法
         var jsonEquip = JsonUtility.ToJson(myInventorys[1]);//将ScriptableObject(只读)转换为Json存储方法
@@ -44,13 +44,13 @@ public class GameSaveManager:MonoBehaviour
 	{
 		BinaryFormatter bf = new BinaryFormatter();
 
-		if (File.Exists(Application.persistentDataPath + "/game_SaveData/bagOther.txt"))//若指定文件存在
+		if (File.Exists(Application.persistentDataPath + "/game_SaveData/bagOther.game"))//若指定文件存在
 		{
             Debug.Log("讀檔背包成功");
-			FileStream fileOther = File.Open(Application.persistentDataPath + "/game_SaveData/bagOther.txt",FileMode.Open);//打开指定文件
-            FileStream fileEquip = File.Open(Application.persistentDataPath + "/game_SaveData/bagEquip.txt",FileMode.Open);//打开指定文件
-            FileStream fileWeapon = File.Open(Application.persistentDataPath + "/game_SaveData/bagWeapon.txt",FileMode.Open);//打开指定文件
-            FileStream filePotion = File.Open(Application.persistentDataPath + "/game_SaveData/bagPotion.txt",FileMode.Open);//打开指定文件
+			FileStream fileOther = File.Open(Application.persistentDataPath + "/game_SaveData/bagOther.game",FileMode.Open);//打开指定文件
+            FileStream fileEquip = File.Open(Application.persistentDataPath + "/game_SaveData/bagEquip.game",FileMode.Open);//打开指定文件
+            FileStream fileWeapon = File.Open(Application.persistentDataPath + "/game_SaveData/bagWeapon.game",FileMode.Open);//打开指定文件
+            FileStream filePotion = File.Open(Application.persistentDataPath + "/game_SaveData/bagPotion.game",FileMode.Open);//打开指定文件
 
 			//通过JsonUtility中的方法重写Inventory
 			JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fileOther),myInventorys[0]);//将存储的数据反序列化并重写到Inventory中

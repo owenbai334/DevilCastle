@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
         public bool playerisDefended;
         public Vector3 playerposition;
     }
-    const string PLAYER_DATA_KEY = "PlayerData";
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     public static int ID;
     public static float value; 
@@ -362,7 +361,8 @@ public class Player : MonoBehaviour
                     if(countClose==0)
                     {
                         atk-=tempClose;
-                        tempClose = value;                    }
+                        tempClose = value;                    
+                    }
                     else
                     {
                         atk-=tempClose;
@@ -445,7 +445,7 @@ public class Player : MonoBehaviour
 
     void SaveMyJson()
     {
-        SaveSystem.SaveByjson(PLAYER_DATA_KEY,SavingData());
+        SaveSystem.SaveByjson(PLAYER_DATA_FILE_NAME,SavingData());
     }
     void LoadMyJson()
     {
@@ -478,15 +478,10 @@ public class Player : MonoBehaviour
         isDefended = saveData.playerisDefended;
         transform.position = saveData.playerposition;
     }
-    [UnityEditor.MenuItem("Developer/Delete Player DataPrefs")]
-    public static void DeleteDataPref()
-    {
-        PlayerPrefs.DeleteKey(PLAYER_DATA_KEY);
-    }
-    [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
-    public static void DeleteDataJson()
-    {
-        SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
-    }
+    // [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
+    // public static void DeleteDataJson()
+    // {
+    //     SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
+    // }
     #endregion
 }

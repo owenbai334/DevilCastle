@@ -96,7 +96,7 @@ public class InventoryManager : MonoBehaviour
     }
     public static void Refresh()
     {
-        for(int j=0;j<3;j++)
+        for(int j=0;j<4;j++)
         {
             for(int i=0;i<instance.slotGrid[j].transform.childCount;i++)
             {
@@ -136,7 +136,6 @@ public class InventoryManager : MonoBehaviour
         }
         if(!instance.bag[Id].itemList.Contains(item))
         {
-            //instance.bag.itemList.Add(item);
             for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
                 if(instance.bag[Id].itemList[i]==null)
