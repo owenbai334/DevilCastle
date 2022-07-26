@@ -35,8 +35,11 @@ public class Player : MonoBehaviour
         public int Farcount;
         public int CloseCount;
         public int MagicCount;
+        public int[] potionNum = new int[18];
     }
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
+    // const string POTION_NUMBER_FILE_NAME = "PotionNum.game";
+    public Inventory PotionBag;
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -506,6 +509,14 @@ public class Player : MonoBehaviour
         SaveData.MagicCount = MagicCount;
         SaveData.TotalHp = TotalHp;
         SaveData.TotalMp = TotalMp;
+        for(int i=0;i<PotionBag.itemList.Count;i++)
+        {
+            if(PotionBag.itemList[i]==null)
+            {
+                break;
+            }
+            SaveData.potionNum[i]=PotionBag.itemList[i].ItemNum;
+        }
         return SaveData;
     }
     void LoadData(SaveData saveData)
@@ -536,6 +547,14 @@ public class Player : MonoBehaviour
         MagicCount= saveData.MagicCount;
         TotalHp = saveData.TotalHp;
         TotalMp = saveData.TotalMp;
+        for(int i=0;i<PotionBag.itemList.Count;i++)
+        {
+            if(PotionBag.itemList[i]==null)
+            {
+                break;
+            }
+            PotionBag.itemList[i].ItemNum=saveData.potionNum[i];
+        }
     }
     void LoadStart()
     {

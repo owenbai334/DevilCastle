@@ -2245,6 +2245,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: PotionBag
+      value: 
+      objectReference: {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: bags.Array.size
       value: 4
       objectReference: {fileID: 0}
