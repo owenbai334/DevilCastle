@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
+        public float TotalHp;
+        public float TotalMp;
         public float playerhp;
         public float playermp;
         public float playeratk;
@@ -448,6 +450,7 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+    #region "存檔讀黨"
     public void Save()
     {
         SaveMyJson();
@@ -455,8 +458,9 @@ public class Player : MonoBehaviour
     public void Load()
     {
         LoadMyJson();
-        Start();
+        LoadStart();
     }
+    #endregion
 
     #region "json"
 
@@ -500,6 +504,8 @@ public class Player : MonoBehaviour
         SaveData.Farcount = Farcount;
         SaveData.CloseCount = CloseCount;
         SaveData.MagicCount = MagicCount;
+        SaveData.TotalHp = TotalHp;
+        SaveData.TotalMp = TotalMp;
         return SaveData;
     }
     void LoadData(SaveData saveData)
@@ -528,7 +534,21 @@ public class Player : MonoBehaviour
         Farcount= saveData.Farcount;
         CloseCount= saveData.CloseCount;
         MagicCount= saveData.MagicCount;
-
+        TotalHp = saveData.TotalHp;
+        TotalMp = saveData.TotalMp;
+    }
+    void LoadStart()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        Ondamage(0);
+        MpLose(0);
+        hpSlider = GetComponentInChildren<Slider>();
+        Status[0].text = "HP:"+hp.ToString();
+        Status[1].text = "攻擊力:"+atk.ToString();
+        Status[2].text = "防禦力:"+def.ToString();
+        Status[3].text = "mp:"+mp.ToString();
+        Status[4].text = "移動速度:"+moveSpeed.ToString();
+        Status[5].text = "無敵狀態:無";
     }
     // [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
     // public static void DeleteDataJson()
