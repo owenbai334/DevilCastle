@@ -16,6 +16,23 @@ public class Player : MonoBehaviour
         public float playermoveSpeed;
         public bool playerisDefended;
         public Vector3 playerposition;
+        public int countHead;
+        public int countBody;
+        public int countShoose;
+        public int countFar;
+        public int countClose;
+        public int countRing;
+        public float tempHead;
+        public float tempBody;
+        public float tempShoose;
+        public float tempFar;
+        public float tempClose;
+        public float tempRing;
+        public float Fardamage;    
+        public float MagicUse;   
+        public int Farcount;
+        public int CloseCount;
+        public int MagicCount;
     }
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     public static int ID;
@@ -465,7 +482,24 @@ public class Player : MonoBehaviour
         SaveData.playerdef=def;
         SaveData.playermoveSpeed=moveSpeed;
         SaveData.playerisDefended=isDefended;
-        SaveData.playerposition=transform.position;           
+        SaveData.playerposition=transform.position;
+        SaveData.countHead = countHead;  
+        SaveData.countBody = countBody;
+        SaveData.countShoose = countShoose;
+        SaveData.countFar = countFar;
+        SaveData.countClose = countClose;
+        SaveData.countRing = countRing;
+        SaveData.tempHead = tempHead;     
+        SaveData.tempBody = tempBody; 
+        SaveData.tempShoose = tempShoose; 
+        SaveData.tempFar = tempFar; 
+        SaveData.tempClose = tempClose; 
+        SaveData.tempRing = tempRing;     
+        SaveData.Fardamage = Fardamage;
+        SaveData.MagicUse = MagicUse;
+        SaveData.Farcount = Farcount;
+        SaveData.CloseCount = CloseCount;
+        SaveData.MagicCount = MagicCount;
         return SaveData;
     }
     void LoadData(SaveData saveData)
@@ -477,6 +511,24 @@ public class Player : MonoBehaviour
         moveSpeed = saveData.playermoveSpeed;
         isDefended = saveData.playerisDefended;
         transform.position = saveData.playerposition;
+        countHead = saveData.countHead;  
+        countBody = saveData.countBody;  
+        countShoose = saveData.countShoose;  
+        countFar = saveData.countFar;  
+        countClose = saveData.countClose;  
+        countRing = saveData.countRing;  
+        tempHead = saveData.tempHead; 
+        tempBody = saveData.tempBody; 
+        tempShoose = saveData.tempShoose; 
+        tempFar = saveData.tempFar; 
+        tempClose = saveData.tempClose; 
+        tempRing = saveData.tempRing; 
+        Fardamage = saveData.Fardamage;
+        MagicUse = saveData.MagicUse;
+        Farcount= saveData.Farcount;
+        CloseCount= saveData.CloseCount;
+        MagicCount= saveData.MagicCount;
+
     }
     // [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
     // public static void DeleteDataJson()

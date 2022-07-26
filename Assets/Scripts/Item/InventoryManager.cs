@@ -153,6 +153,7 @@ public class InventoryManager : MonoBehaviour
     }
     public static void UseItem(Item item ,Text num,int id)
     {
+        
         switch((int)item.IDtype/10)
         {
             case 1:
@@ -189,12 +190,14 @@ public class InventoryManager : MonoBehaviour
         {
             for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
+                
                 if(instance.bag[Id].itemList[i]==null)
-                {
-                    break;
+                {                   
+                    continue;
                 }
                 switch(id)
                 {
+                    
                     case 10:
                         if(instance.bag[Id].itemList[i].isHead==true)
                         {

@@ -22,7 +22,7 @@ MonoBehaviour:
   weaponCount: 0
   isHead: 0
   isBody: 0
-  isShoose: 0
+  isShoose: 1
   isFar: 0
   isClose: 0
   isRing: 0

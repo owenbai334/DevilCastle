@@ -3685,7 +3685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag:
+  - {fileID: 11400000, guid: d945835ef3a517b48998fe5e8502ba51, type: 2}
+  - {fileID: 11400000, guid: e3e24ff9ffc03694abcd8a3b2ba37ae9, type: 2}
   - {fileID: 11400000, guid: 792a411b29674db41991e8fd7c5fd0c8, type: 2}
+  - {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
   slotGrid:
   - {fileID: 702913753}
   emptySlot:
@@ -4887,7 +4890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag:
+  - {fileID: 11400000, guid: d945835ef3a517b48998fe5e8502ba51, type: 2}
   - {fileID: 11400000, guid: e3e24ff9ffc03694abcd8a3b2ba37ae9, type: 2}
+  - {fileID: 11400000, guid: 792a411b29674db41991e8fd7c5fd0c8, type: 2}
+  - {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
   slotGrid:
   - {fileID: 952245747}
   emptySlot:
@@ -8949,6 +8955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag:
+  - {fileID: 11400000, guid: d945835ef3a517b48998fe5e8502ba51, type: 2}
+  - {fileID: 11400000, guid: e3e24ff9ffc03694abcd8a3b2ba37ae9, type: 2}
+  - {fileID: 11400000, guid: 792a411b29674db41991e8fd7c5fd0c8, type: 2}
   - {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
   slotGrid:
   - {fileID: 1883527008}
