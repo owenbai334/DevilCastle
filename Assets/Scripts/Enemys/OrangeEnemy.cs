@@ -82,7 +82,7 @@ public class OrangeEnemy : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
     void OnCollisionEnter2D(Collision2D other)
     {
