@@ -36,10 +36,16 @@ public class Player : MonoBehaviour
         public int CloseCount;
         public int MagicCount;
         public int[] potionNum = new int[18];
+        public bool[] isHead = new bool[18];
+        public bool[] isBody = new bool[18];
+        public bool[] isShoose = new bool[18];
+        public bool[] isFar = new bool[18];
+        public bool[] isClose = new bool[18];
+        public bool[] isRing = new bool[18];
     }
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
-    // const string POTION_NUMBER_FILE_NAME = "PotionNum.game";
     public Inventory PotionBag;
+    public Inventory[] Equips; //0裝備,1武器
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -517,6 +523,26 @@ public class Player : MonoBehaviour
             }
             SaveData.potionNum[i]=PotionBag.itemList[i].ItemNum;
         }
+        for(int i=0;i<Equips[0].itemList.Count;i++)
+        {
+            if(Equips[0].itemList[i]==null)
+            {
+                break;
+            }
+            SaveData.isHead[i]=Equips[0].itemList[i].isHead;
+            SaveData.isBody[i]=Equips[0].itemList[i].isBody;
+            SaveData.isShoose[i]=Equips[0].itemList[i].isShoose;
+        }
+        for(int i=0;i<Equips[1].itemList.Count;i++)
+        {
+            if(Equips[1].itemList[i]==null)
+            {
+                break;
+            }
+            SaveData.isFar[i]=Equips[1].itemList[i].isFar;
+            SaveData.isClose[i]=Equips[1].itemList[i].isClose;
+            SaveData.isRing[i]=Equips[1].itemList[i].isRing;
+        }
         return SaveData;
     }
     void LoadData(SaveData saveData)
@@ -554,6 +580,26 @@ public class Player : MonoBehaviour
                 break;
             }
             PotionBag.itemList[i].ItemNum=saveData.potionNum[i];
+        }
+        for(int i=0;i<Equips[0].itemList.Count;i++)
+        {
+            if(Equips[0].itemList[i]==null)
+            {
+                continue;
+            }
+            Equips[0].itemList[i].isHead=saveData.isHead[i];
+            Equips[0].itemList[i].isBody=saveData.isBody[i];
+            Equips[0].itemList[i].isShoose=saveData.isShoose[i];
+        }
+        for(int i=0;i<Equips[1].itemList.Count;i++)
+        {
+            if(Equips[1].itemList[i]==null)
+            {
+                continue;
+            }
+            Equips[1].itemList[i].isFar=saveData.isFar[i];
+            Equips[1].itemList[i].isClose=saveData.isClose[i];
+            Equips[1].itemList[i].isRing=saveData.isRing[i];
         }
     }
     void LoadStart()
