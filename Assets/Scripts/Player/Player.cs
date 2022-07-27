@@ -519,7 +519,7 @@ public class Player : MonoBehaviour
         {
             if(PotionBag.itemList[i]==null)
             {
-                break;
+                continue;
             }
             SaveData.potionNum[i]=PotionBag.itemList[i].ItemNum;
         }
@@ -527,7 +527,7 @@ public class Player : MonoBehaviour
         {
             if(Equips[0].itemList[i]==null)
             {
-                break;
+                continue;
             }
             SaveData.isHead[i]=Equips[0].itemList[i].isHead;
             SaveData.isBody[i]=Equips[0].itemList[i].isBody;
@@ -537,7 +537,7 @@ public class Player : MonoBehaviour
         {
             if(Equips[1].itemList[i]==null)
             {
-                break;
+                continue;
             }
             SaveData.isFar[i]=Equips[1].itemList[i].isFar;
             SaveData.isClose[i]=Equips[1].itemList[i].isClose;
@@ -577,7 +577,7 @@ public class Player : MonoBehaviour
         {
             if(PotionBag.itemList[i]==null)
             {
-                break;
+                continue;
             }
             PotionBag.itemList[i].ItemNum=saveData.potionNum[i];
         }
