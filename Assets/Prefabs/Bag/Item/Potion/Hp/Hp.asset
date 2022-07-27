@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hp
   m_EditorClassIdentifier: 
   Itemname: hp
-  ItemNum: 10
+  ItemNum: 7
   ItemInfo: "\u660F\u7761\u7D05\u8336"
   ItemImg: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
   Itemdata: 0
