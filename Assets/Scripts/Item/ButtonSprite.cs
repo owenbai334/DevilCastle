@@ -85,6 +85,7 @@ public class ButtonSprite : MonoBehaviour
         ButtonRealSprites[Count].sprite = ButtonSprites[1];
         Grids[Count*2].SetActive(true);
         Count = -1;
+        InventoryManager.Refresh();
     }
     
 }

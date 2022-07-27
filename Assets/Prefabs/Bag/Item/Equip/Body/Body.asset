@@ -16,7 +16,7 @@ MonoBehaviour:
   ItemNum: 0
   ItemInfo: "\u7531\u8056\u4EBA\u6240\u5275\u9020\u7684\u76D4\u7532"
   ItemImg: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
-  Itemdata: 0
+  Itemdata: 40
   IDtype: 11
   useValue: 0
   weaponCount: 0

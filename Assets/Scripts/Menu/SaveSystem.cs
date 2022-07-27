@@ -10,8 +10,12 @@ public static class SaveSystem
     #region "Json"
     public static void SaveByjson(string SaveFilename,object data)
     {
+        if (!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))//若路径下不存在指定文件夹
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/game_SaveData");//创建指定文件夹
+		}
         var json = JsonUtility.ToJson(data);
-        var path = Path.Combine(Application.persistentDataPath,SaveFilename);
+        var path = Path.Combine(Application.persistentDataPath+"/game_SaveData",SaveFilename);
 
         try
         {
@@ -29,7 +33,7 @@ public static class SaveSystem
     }
     public static T LoadFromJson<T>(string SaveFilename)
     {
-        var path = Path.Combine(Application.persistentDataPath,SaveFilename);
+        var path = Path.Combine(Application.persistentDataPath+"/game_SaveData",SaveFilename);
         
         try
         {

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
+        public float TotalHp;
+        public float TotalMp;
         public float playerhp;
         public float playermp;
         public float playeratk;
@@ -16,9 +18,28 @@ public class Player : MonoBehaviour
         public float playermoveSpeed;
         public bool playerisDefended;
         public Vector3 playerposition;
+        public int countHead;
+        public int countBody;
+        public int countShoose;
+        public int countFar;
+        public int countClose;
+        public int countRing;
+        public float tempHead;
+        public float tempBody;
+        public float tempShoose;
+        public float tempFar;
+        public float tempClose;
+        public float tempRing;
+        public float Fardamage;    
+        public float MagicUse;   
+        public int Farcount;
+        public int CloseCount;
+        public int MagicCount;
+        public int[] potionNum = new int[18];
     }
-    const string PLAYER_DATA_KEY = "PlayerData";
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
+    // const string POTION_NUMBER_FILE_NAME = "PotionNum.game";
+    public Inventory PotionBag;
     public static int ID;
     public static float value; 
     public static Item thisItem;
@@ -362,7 +383,8 @@ public class Player : MonoBehaviour
                     if(countClose==0)
                     {
                         atk-=tempClose;
-                        tempClose = value;                    }
+                        tempClose = value;                    
+                    }
                     else
                     {
                         atk-=tempClose;
@@ -431,6 +453,7 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+    #region "存檔讀黨"
     public void Save()
     {
         SaveMyJson();
@@ -438,20 +461,21 @@ public class Player : MonoBehaviour
     public void Load()
     {
         LoadMyJson();
-        Start();
+        LoadStart();
     }
+    #endregion
 
     #region "json"
 
     void SaveMyJson()
     {
-        SaveSystem.SaveByjson(PLAYER_DATA_KEY,SavingData());
+        SaveSystem.SaveByjson(PLAYER_DATA_FILE_NAME,SavingData());
     }
     void LoadMyJson()
     {
         var SaveData = SaveSystem.LoadFromJson<SaveData>(PLAYER_DATA_FILE_NAME);
         LoadData(SaveData);
-
+        InventoryManager.Refresh();  
     }
     #endregion
 
@@ -465,7 +489,34 @@ public class Player : MonoBehaviour
         SaveData.playerdef=def;
         SaveData.playermoveSpeed=moveSpeed;
         SaveData.playerisDefended=isDefended;
-        SaveData.playerposition=transform.position;           
+        SaveData.playerposition=transform.position;
+        SaveData.countHead = countHead;  
+        SaveData.countBody = countBody;
+        SaveData.countShoose = countShoose;
+        SaveData.countFar = countFar;
+        SaveData.countClose = countClose;
+        SaveData.countRing = countRing;
+        SaveData.tempHead = tempHead;     
+        SaveData.tempBody = tempBody; 
+        SaveData.tempShoose = tempShoose; 
+        SaveData.tempFar = tempFar; 
+        SaveData.tempClose = tempClose; 
+        SaveData.tempRing = tempRing;     
+        SaveData.Fardamage = Fardamage;
+        SaveData.MagicUse = MagicUse;
+        SaveData.Farcount = Farcount;
+        SaveData.CloseCount = CloseCount;
+        SaveData.MagicCount = MagicCount;
+        SaveData.TotalHp = TotalHp;
+        SaveData.TotalMp = TotalMp;
+        for(int i=0;i<PotionBag.itemList.Count;i++)
+        {
+            if(PotionBag.itemList[i]==null)
+            {
+                break;
+            }
+            SaveData.potionNum[i]=PotionBag.itemList[i].ItemNum;
+        }
         return SaveData;
     }
     void LoadData(SaveData saveData)
@@ -477,16 +528,51 @@ public class Player : MonoBehaviour
         moveSpeed = saveData.playermoveSpeed;
         isDefended = saveData.playerisDefended;
         transform.position = saveData.playerposition;
+        countHead = saveData.countHead;  
+        countBody = saveData.countBody;  
+        countShoose = saveData.countShoose;  
+        countFar = saveData.countFar;  
+        countClose = saveData.countClose;  
+        countRing = saveData.countRing;  
+        tempHead = saveData.tempHead; 
+        tempBody = saveData.tempBody; 
+        tempShoose = saveData.tempShoose; 
+        tempFar = saveData.tempFar; 
+        tempClose = saveData.tempClose; 
+        tempRing = saveData.tempRing; 
+        Fardamage = saveData.Fardamage;
+        MagicUse = saveData.MagicUse;
+        Farcount= saveData.Farcount;
+        CloseCount= saveData.CloseCount;
+        MagicCount= saveData.MagicCount;
+        TotalHp = saveData.TotalHp;
+        TotalMp = saveData.TotalMp;
+        for(int i=0;i<PotionBag.itemList.Count;i++)
+        {
+            if(PotionBag.itemList[i]==null)
+            {
+                break;
+            }
+            PotionBag.itemList[i].ItemNum=saveData.potionNum[i];
+        }
     }
-    [UnityEditor.MenuItem("Developer/Delete Player DataPrefs")]
-    public static void DeleteDataPref()
+    void LoadStart()
     {
-        PlayerPrefs.DeleteKey(PLAYER_DATA_KEY);
+        sr = GetComponent<SpriteRenderer>();
+        Ondamage(0);
+        MpLose(0);
+        hpSlider = GetComponentInChildren<Slider>();
+        Status[0].text = "HP:"+hp.ToString();
+        Status[1].text = "攻擊力:"+atk.ToString();
+        Status[2].text = "防禦力:"+def.ToString();
+        Status[3].text = "mp:"+mp.ToString();
+        Status[4].text = "移動速度:"+moveSpeed.ToString();
+        Status[5].text = "無敵狀態:無";
     }
-    [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
-    public static void DeleteDataJson()
-    {
-        SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
-    }
+    // [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
+    // public static void DeleteDataJson()
+    // {
+    //     SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
+    // }
     #endregion
 }

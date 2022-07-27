@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: WeaponBag
   m_EditorClassIdentifier: 
   itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: b886f4fac0d11db4e936ef4f25526432, type: 2}
+  - {fileID: 11400000, guid: 4cbfa6e3b2c225e4ab05adb8b9137b2d, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: fbaa8d47deff8b54fa085c3008f7ee56, type: 2}
+  - {fileID: 11400000, guid: 885250678428f144b9f4c58271addff0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: a432d1d096dffc643bea8116480455ca, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
