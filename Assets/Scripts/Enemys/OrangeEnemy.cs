@@ -19,8 +19,8 @@ public class OrangeEnemy : MonoBehaviour
     public float hp = 100;
     private float TotalHp;
     public Slider hpSlider;
-    public Player player;
     //掉落
+    public Item thisItem;
     public static OrangeEnemy Instance;
     // Start is called before the first frame update
     void Start()
@@ -82,6 +82,7 @@ public class OrangeEnemy : MonoBehaviour
 
     void Die()
     {
+        InventoryManager.AddNewItem(thisItem);
         this.gameObject.SetActive(false);
     }
     void OnCollisionEnter2D(Collision2D other)

@@ -147,7 +147,28 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            item.ItemNum+=1;          
+            if(Id==0||Id==3)
+            {
+                if(item.ItemNum<999)
+                {
+                    item.ItemNum+=1;
+                }    
+                else
+                {
+                    item.ItemNum=999;
+                }      
+            }    
+            else
+            {
+                for(int i=0;i<instance.bag[Id].itemList.Count;i++)
+                {
+                    if(instance.bag[Id].itemList[i]==null)
+                    {
+                        instance.bag[Id].itemList[i] = item;
+                        break;
+                    }
+                }
+            }                
         }
         Refresh();     
     }
