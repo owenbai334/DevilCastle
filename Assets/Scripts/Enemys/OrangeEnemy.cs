@@ -9,6 +9,7 @@ public class OrangeEnemy : MonoBehaviour
     public float MoveSpeed=10;
     float MoveTime;
     public float AllMovetime = 0.5f;
+    [SerializeField] Vector3 position;
     //轉身
     private SpriteRenderer sr;
     public Sprite[] OrangeSprites;
@@ -17,11 +18,13 @@ public class OrangeEnemy : MonoBehaviour
     public float damage =10;
     //生命
     public float hp = 100;
-    private float TotalHp;
+    [SerializeField] float TotalHp;
     public Slider hpSlider;
+    public bool isDie = false;
     //掉落
     public Item thisItem;
     public static OrangeEnemy Instance;
+    const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,10 @@ public class OrangeEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDie)
+        {
+            this.gameObject.SetActive(false);
+        }
         Move();
         MoveSprite();
     }
@@ -82,8 +89,8 @@ public class OrangeEnemy : MonoBehaviour
 
     void Die()
     {
+        isDie = true;
         InventoryManager.AddNewItem(thisItem);
-        this.gameObject.SetActive(false);
     }
     void OnCollisionEnter2D(Collision2D other)
     {

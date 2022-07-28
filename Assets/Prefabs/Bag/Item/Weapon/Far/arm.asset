@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c215cc95c951748b0688a184833b3e, type: 3}
-  m_Name: Far
+  m_Name: arm
   m_EditorClassIdentifier: 
-  Itemname: "\u65A7\u982D"
+  Itemname: "\u795E\u901F\u5F13"
   ItemNum: 0
-  ItemInfo: "\u6068\u53B2\u5BB3"
-  ItemImg: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
-  Itemdata: 20
-  IDtype: 21
-  useValue: 0
+  ItemInfo: "\u5F88\u53B2\u5BB3\u7684\u5F13"
+  ItemImg: {fileID: 21300000, guid: 5d7061fc7da05ce44add317708ec7215, type: 3}
+  Itemdata: 30
+  IDtype: 20
+  useValue: 20
   weaponCount: 0
   isHead: 0
   isBody: 0
