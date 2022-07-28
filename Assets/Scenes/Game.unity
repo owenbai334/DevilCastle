@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &32092735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1077,11 +1077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menus:
-  - {fileID: 1926281357}
-  - {fileID: 1267898006}
-  - {fileID: 1740056360}
+  - {fileID: 32092734}
   - {fileID: 1307879097}
-  - {fileID: 1710807520}
+  - {fileID: 1740056360}
+  - {fileID: 1267898006}
   Buttons:
   - {fileID: 1206302591}
   - {fileID: 1274681443}
@@ -2274,6 +2273,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: def
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: PotionBag
       value: 
       objectReference: {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
@@ -2282,8 +2285,16 @@ PrefabInstance:
       value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: Defendedtime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: bags.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: Menus.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Equips.Array.size
@@ -2312,11 +2323,11 @@ PrefabInstance:
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[0]
       value: 
-      objectReference: {fileID: 1926281357}
+      objectReference: {fileID: 32092734}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[1]
       value: 
-      objectReference: {fileID: 1307879097}
+      objectReference: {fileID: 1710807520}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[2]
       value: 
@@ -6418,7 +6429,7 @@ RectTransform:
   - {fileID: 2038968677}
   - {fileID: 1559448745}
   m_Father: {fileID: 1613415949}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6472,7 +6483,7 @@ RectTransform:
   - {fileID: 508499820}
   - {fileID: 1253042224}
   m_Father: {fileID: 1613415949}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6823,7 +6834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1307879098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6837,7 +6848,7 @@ RectTransform:
   m_Children:
   - {fileID: 1299555759}
   m_Father: {fileID: 1613415949}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8416,10 +8427,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 32092735}
-  - {fileID: 1274681444}
   - {fileID: 1307879098}
   - {fileID: 1740056361}
   - {fileID: 1267898007}
+  - {fileID: 1274681444}
   - {fileID: 1206302592}
   - {fileID: 2024254433}
   - {fileID: 1515117214}
@@ -8954,7 +8965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1740056361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8975,7 +8986,7 @@ RectTransform:
   - {fileID: 965888743}
   - {fileID: 1410992440}
   m_Father: {fileID: 1613415949}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10010,7 +10021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1926281358
 Transform:
   m_ObjectHideFlags: 0

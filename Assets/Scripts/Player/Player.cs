@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         public bool[] isFar = new bool[18];
         public bool[] isClose = new bool[18];
         public bool[] isRing = new bool[18];
+        public float Defendedtime;
+        public float DefendedtimeVal;
     }
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     [HideInInspector]
@@ -96,8 +98,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度,5無敵狀態
     //死亡
-    [HideInInspector]
-    public GameObject[] Menus; //0 背景,1滾輪,2按鈕,3死亡
+    // [HideInInspector]
+    public GameObject[] Menus; //0 背景,1死亡
     float Fardamage = 0;
     float MagicUse = 0;
     int Farcount = 0;
@@ -113,10 +115,11 @@ public class Player : MonoBehaviour
     public float def = 10;
     public float moveSpeed = 10;
     //無敵狀態
+    [HideInInspector]
     public bool isDefended= false;  
     [HideInInspector]
     public float Defendedtime;
-    float DefendedtimeVal=0;
+    float DefendedtimeVal = 0;
     public static Player Instance;
     // Start is called before the first frame update
     void Start()
@@ -302,9 +305,7 @@ public class Player : MonoBehaviour
     {
         Time.timeScale=0;
         Menus[0].SetActive(true);
-        Menus[1].SetActive(false);
-        Menus[2].SetActive(false);
-        Menus[3].SetActive(true);
+        Menus[1].SetActive(true);
         Destroy(gameObject);
     }
     public void ItemUse()
@@ -526,6 +527,8 @@ public class Player : MonoBehaviour
         SaveData.MagicCount = MagicCount;
         SaveData.TotalHp = TotalHp;
         SaveData.TotalMp = TotalMp;
+        SaveData.Defendedtime = Defendedtime;
+        SaveData.DefendedtimeVal = DefendedtimeVal;
         for(int i=0;i<PotionBag.itemList.Count;i++)
         {
             if(PotionBag.itemList[i]==null)
@@ -584,6 +587,8 @@ public class Player : MonoBehaviour
         MagicCount= saveData.MagicCount;
         TotalHp = saveData.TotalHp;
         TotalMp = saveData.TotalMp;
+        Defendedtime = saveData.Defendedtime;
+        DefendedtimeVal = saveData.DefendedtimeVal;
         for(int i=0;i<PotionBag.itemList.Count;i++)
         {
             if(PotionBag.itemList[i]==null)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public static Menu Instance;
-    public GameObject[] Menus; //0 暫停背景, 1 兩個退出按鈕,2 一般按鈕,3 滾輪,4死亡
+    public GameObject[] Menus; //0 暫停背景, 1 滾輪,2 一般按鈕,3 兩個退出按鈕
     public GameObject[] Buttons; //0 狀態,1 背包,2 好感度,3設定,4存檔,5讀檔,6任務
     public Button save;
     public Button load;
@@ -18,13 +18,9 @@ public class Menu : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Menus[0].SetActive(true);
         Bags();
-        Menus[2].SetActive(true);
-        Menus[3].SetActive(true);
         Buttons[count].SetActive(false);    
         count = -1;
-        Menus[0].SetActive(false);
         save.onClick.AddListener(() => player.Save());
         load.onClick.AddListener(() => player.Load());
     }
@@ -41,21 +37,22 @@ public class Menu : MonoBehaviour
             if(!menucount)
             {
                 Time.timeScale=0;
-                exitcount=false;
             }
             else
             {
-                Time.timeScale=1;
-                exitcount=false;
+                Time.timeScale=1;              
             }
+            exitcount=false;
             menucount =!menucount;
             Menus[0].SetActive(menucount);
-            Menus[1].SetActive(exitcount);         
+            Menus[1].SetActive(menucount);
+            Menus[2].SetActive(menucount);
+            Menus[3].SetActive(exitcount);         
         } 
         else if(Input.GetKeyDown(KeyCode.Escape)&&count!=-1)
         {
+            Menus[1].SetActive(true);
             Menus[2].SetActive(true);
-            Menus[3].SetActive(true);
             Buttons[count].SetActive(false);    
             count = -1; 
         }       
@@ -63,7 +60,7 @@ public class Menu : MonoBehaviour
     public void Exit()
     {
         exitcount = !exitcount; 
-        Menus[1].SetActive(exitcount);        
+        Menus[3].SetActive(exitcount);        
     }
     public void MenuMove()
     {
