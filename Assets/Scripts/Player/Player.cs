@@ -44,7 +44,9 @@ public class Player : MonoBehaviour
         public bool[] isRing = new bool[18];
     }
     const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
+    [HideInInspector]
     public Inventory PotionBag;
+    [HideInInspector]
     public Inventory[] Equips; //0裝備,1武器
     public static int ID;
     public static float value; 
@@ -65,48 +67,56 @@ public class Player : MonoBehaviour
     float tempClose=0;
     int countRing =0;
     float tempRing=0;
-    //跳躍
-    public float jumpSpeed = 100;
-    bool canJump = true;
     //遠程攻擊
     public GameObject[] farPrefab;
-    private Vector3 farEulerAngles;
-    private float AttackTime=0;
+    Vector3 farEulerAngles;
+    float AttackTime=0;
+    [HideInInspector]
     public float AttackTimeval = 0.4f;
     //近戰攻擊
     public GameObject[] closePrefab;
-    private Vector3 closeEulerAngles;
+    Vector3 closeEulerAngles;
+    [HideInInspector]
     public Transform[] ClosePosition;
-    private Transform RealPosition;
+    Transform RealPosition;
     //魔法攻擊
     public GameObject[] magicPrefab;
     //轉向
     private SpriteRenderer sr;
+    [HideInInspector]
     public Sprite[] PlayerSprites;
     //生命
     static float TotalHp;
+    [HideInInspector]
     public Slider hpSlider;
     float TotalMp;
+    [HideInInspector]
     public Slider mpSlider;
     //狀態監控
+    [HideInInspector]
     public Text[] Status; //0 hp,1 攻擊,2防禦,3 mp,4速度,5無敵狀態
-    //無敵狀態
-    public float Defendedtime=3;
-    float DefendedtimeVal=0;
     //死亡
+    [HideInInspector]
     public GameObject[] Menus; //0 背景,1滾輪,2按鈕,3死亡
     float Fardamage = 0;
     float MagicUse = 0;
     int Farcount = 0;
     int CloseCount = 0;
     int MagicCount = 0;
+    //跳躍
+    public float jumpSpeed = 100;
+    bool canJump = true;
     //玩家數值
     public float hp = 100;
     public float mp = 100;
     public float atk = 20;
     public float def = 10;
     public float moveSpeed = 10;
-    public bool isDefended= false;
+    //無敵狀態
+    public bool isDefended= false;  
+    [HideInInspector]
+    public float Defendedtime;
+    float DefendedtimeVal=0;
     public static Player Instance;
     // Start is called before the first frame update
     void Start()
@@ -442,7 +452,8 @@ public class Player : MonoBehaviour
                     break;
                 case 34:
                     Status[5].text = "無敵狀態:有";
-                    isDefended =true;
+                    Defendedtime = value;
+                    isDefended =true;                   
                     break;
                 case 35:
                     moveSpeed += value;
@@ -459,7 +470,7 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
-    #region "存檔讀黨"
+    #region "存檔讀檔"
     public void Save()
     {
         SaveMyJson();
@@ -615,10 +626,5 @@ public class Player : MonoBehaviour
         Status[4].text = "移動速度:"+moveSpeed.ToString();
         Status[5].text = "無敵狀態:無";
     }
-    // [UnityEditor.MenuItem("Developer/Delete Player DataJsons")]
-    // public static void DeleteDataJson()
-    // {
-    //     SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
-    // }
     #endregion
 }

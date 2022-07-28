@@ -9,17 +9,22 @@ public class OrangeEnemy : MonoBehaviour
     public float MoveSpeed=10;
     float MoveTime;
     public float AllMovetime = 0.5f;
+    [HideInInspector]
     [SerializeField] Vector3 position;
     //轉身
-    private SpriteRenderer sr;
+    SpriteRenderer sr;
+    [HideInInspector]
     public Sprite[] OrangeSprites;
-    private float SpriteTime;
+    float SpriteTime;
     //攻擊力
     public float damage =10;
     //生命
     public float hp = 100;
+    [HideInInspector]
     [SerializeField] float TotalHp;
+    [HideInInspector]
     public Slider hpSlider;
+    [HideInInspector]
     public bool isDie = false;
     //掉落
     public Item thisItem;
