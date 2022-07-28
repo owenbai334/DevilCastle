@@ -307,9 +307,12 @@ public class InventoryManager : MonoBehaviour
         }
         for(int i=0;i<instance.bag[Id].itemList.Count;i++)
             {
-
                 if(instance.bag[Id].itemList[i]==item)
                 {
+                    if(instance.bag[Id].itemList[i].isHead||instance.bag[Id].itemList[i].isBody||instance.bag[Id].itemList[i].isShoose||instance.bag[Id].itemList[i].isFar||instance.bag[Id].itemList[i].isClose||instance.bag[Id].itemList[i].isRing)
+                    {
+                        return;
+                    }
                     instance.bag[Id].itemList[i] = null;
                     break;
                 }
