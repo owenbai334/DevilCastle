@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     public static Menu Instance;
     public GameObject[] Menus; //0 暫停背景, 1 滾輪,2 一般按鈕,3 兩個退出按鈕
     public GameObject[] Buttons; //0 狀態,1 背包,2 好感度,3設定,4存檔,5讀檔,6任務
+    public Text[] Music; //0背景 1音效
     public Button save;
     public Button load;
     private bool menucount = false;
     private bool exitcount = false; 
-    public Scrollbar scrollbar;
+    public Scrollbar[] scrollbars; //0 滾輪 1背景 2音效
     private int count = -1;
     public Player player;
     void Awake()
@@ -64,7 +66,7 @@ public class Menu : MonoBehaviour
     }
     public void MenuMove()
     {
-        Menus[2].transform.localPosition=new Vector3(0,scrollbar.value*600,0);  
+        Menus[2].transform.localPosition=new Vector3(0,scrollbars[0].value*600,0);  
     }
     void MenuClose()
     {
@@ -98,5 +100,31 @@ public class Menu : MonoBehaviour
     {
         count = 6 ;
         MenuClose();
+    }
+    public void Replay()
+    {
+        SceneManager.LoadScene("Game");
+        Time.timeScale=1; 
+        
+    }
+
+    public void ExitStartMenu()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void BackMusic()
+    {
+        Music[0].text = ((int)(scrollbars[1].value*100)).ToString();
+    }
+
+    public void OtherMusic()
+    {
+        Music[1].text = ((int)(scrollbars[2].value*100)).ToString();
     }
 }

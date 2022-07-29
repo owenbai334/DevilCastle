@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
     float DefendedtimeVal = 0;
     public static Player Instance;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         TotalHp = hp;
