@@ -2260,14 +2260,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 748039137, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 748039137, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_GravityScale
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2060702836, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2323,10 +2315,6 @@ PrefabInstance:
     - target: {fileID: 6225400626644811230, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: jumpSpeed
-      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[0]

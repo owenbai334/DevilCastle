@@ -242,7 +242,7 @@ public class Player : MonoBehaviour
     }
     void CloseAttack()
     {
-         if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K))
         {
             CloseWeapean closeweapean = Instantiate(closePrefab[CloseCount],RealPosition.position,Quaternion.Euler(transform.eulerAngles+closeEulerAngles)).GetComponent<CloseWeapean>();
             closeweapean.damage=atk;

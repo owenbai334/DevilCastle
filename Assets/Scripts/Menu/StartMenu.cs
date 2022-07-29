@@ -25,6 +25,7 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame()
     {
+        ChangeScene.canload=false;
         SceneManager.LoadScene("Game");
     }
     public void LoadGame()

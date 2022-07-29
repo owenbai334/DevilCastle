@@ -7,13 +7,7 @@ public class MoveFloor : MonoBehaviour
     public float MoveSpeed = 10f;
     float MoveTime;
     public float AllMovetime = 0.5f;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    void Update() 
     {
         Move();
     }

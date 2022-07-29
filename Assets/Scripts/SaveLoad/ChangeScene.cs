@@ -11,9 +11,18 @@ public class ChangeScene : MonoBehaviour
     {
         if(canload)
         {
+            canload=false;
             player.Load();
             GameSave.LoadGame();
-            canload=false;
         }  
+    }
+    void Update()
+    {
+        if(canload)
+        {
+            canload=false;
+            player.Load();
+            GameSave.LoadGame();
+        } 
     }
 }

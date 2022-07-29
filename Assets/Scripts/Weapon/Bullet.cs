@@ -6,13 +6,6 @@ public class Bullet : MonoBehaviour
 {
     public float movespeed=10;
     public float damage;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(transform.up*movespeed*Time.deltaTime,Space.World);
