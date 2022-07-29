@@ -475,12 +475,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2.5
   AllMovetime: 1
+  position: {x: 0, y: 0, z: 0}
   OrangeSprites:
   - {fileID: 21300000, guid: ecadcdaec66b3c3499b175d46ca2a498, type: 3}
   - {fileID: 21300000, guid: d4be9a473da97da4da224c6203c43358, type: 3}
   damage: 10
   hp: 30
+  TotalHp: 0
   hpSlider: {fileID: 723807119}
+  isDie: 0
+  thisItem: {fileID: 11400000, guid: 990e55775fa14af45b4a4cdb9379643e, type: 2}
 --- !u!61 &-2711963683813149334
 BoxCollider2D:
   m_ObjectHideFlags: 0

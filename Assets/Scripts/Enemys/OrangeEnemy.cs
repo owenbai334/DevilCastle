@@ -14,7 +14,7 @@ public class OrangeEnemy : MonoBehaviour
     //轉身
     SpriteRenderer sr;
     [HideInInspector]
-    public Sprite[] OrangeSprites;
+    [SerializeField] Sprite[] OrangeSprites;
     float SpriteTime;
     //攻擊力
     public float damage =10;
@@ -28,8 +28,6 @@ public class OrangeEnemy : MonoBehaviour
     public bool isDie = false;
     //掉落
     public Item thisItem;
-    public static OrangeEnemy Instance;
-    const string PLAYER_DATA_FILE_NAME = "PlayerData.game";
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +35,16 @@ public class OrangeEnemy : MonoBehaviour
         TotalHp = hp;
         hpSlider = GetComponentInChildren<Slider>();
     }
-
+    public void Load()
+    {
+        transform.position = position;
+        sr = GetComponent<SpriteRenderer>();
+        hpSlider = GetComponentInChildren<Slider>();
+    }
     // Update is called once per frame
     void Update()
     {
+        position = transform.position;
         if(isDie)
         {
             this.gameObject.SetActive(false);

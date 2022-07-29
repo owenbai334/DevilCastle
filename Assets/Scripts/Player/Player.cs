@@ -105,22 +105,22 @@ public class Player : MonoBehaviour
     int Farcount = 0;
     int CloseCount = 0;
     int MagicCount = 0;
-    //跳躍
-    public float jumpSpeed = 100;
-    bool canJump = true;
     //玩家數值
     public float hp = 100;
     public float mp = 100;
     public float atk = 20;
     public float def = 10;
     public float moveSpeed = 10;
+    //跳躍
+    public float jumpSpeed = 100;
+    bool canJump = true;
+    bool isDie = false;
     //無敵狀態
     [HideInInspector]
     public bool isDefended= false;  
     [HideInInspector]
     public float Defendedtime;
     float DefendedtimeVal = 0;
-    public static Player Instance;
     // Start is called before the first frame update
     public void Start()
     {
@@ -150,6 +150,10 @@ public class Player : MonoBehaviour
             MagicAttack();
             FarAttack();
             CloseAttack();
+        }
+        if(isDie)
+        {
+            this.gameObject.SetActive(false);
         }
         else
         {
@@ -303,11 +307,12 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
+        isDie = true;
         Time.timeScale=0;
         Menus[0].SetActive(true);
         Menus[1].SetActive(true);
-        Destroy(gameObject);
     }
+    #region "使用或丟掉物品"
     public void ItemUse()
     {
         PlayerStatus(ID,value,usevalue,weaponcount);
@@ -317,6 +322,7 @@ public class Player : MonoBehaviour
     {
         InventoryManager.TrashItem(thisItem,ID);
     }
+    #endregion
     #region "使用物品後狀態"
     public void PlayerStatus(float Idtype,float value,float usevalue,int weaponcount)
     {
@@ -482,9 +488,7 @@ public class Player : MonoBehaviour
         LoadStart();
     }
     #endregion
-
     #region "json"
-
     void SaveMyJson()
     {
         SaveSystem.SaveByjson(PLAYER_DATA_FILE_NAME,SavingData());
@@ -496,7 +500,6 @@ public class Player : MonoBehaviour
         InventoryManager.Refresh();  
     }
     #endregion
-
     #region "存檔幫助"
     SaveData SavingData()
     {

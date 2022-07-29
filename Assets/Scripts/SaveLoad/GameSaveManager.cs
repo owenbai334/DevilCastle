@@ -82,6 +82,7 @@ public class GameSaveManager:MonoBehaviour
 		for(int i=0;i<orangeEnemy.Length;i++)
 		{
 			orangeEnemy[i].Ondamage(0);
+			orangeEnemy[i].Load();
 			if(orangeEnemy[i].isDie==false)
 			{
 				orangeEnemy[i].gameObject.SetActive(true);

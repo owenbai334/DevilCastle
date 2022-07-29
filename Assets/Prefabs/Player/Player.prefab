@@ -643,7 +643,6 @@ GameObject:
   - component: {fileID: 6225400626644811231}
   - component: {fileID: 748039137}
   - component: {fileID: 748039136}
-  - component: {fileID: 1183320248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Charator
@@ -731,7 +730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22f43368800bfd419394ba7473a26b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 400
+  PotionBag: {fileID: 11400000, guid: b1993416e53163b48a861a85f6ed7d61, type: 2}
+  Equips:
+  - {fileID: 11400000, guid: e3e24ff9ffc03694abcd8a3b2ba37ae9, type: 2}
+  - {fileID: 11400000, guid: 792a411b29674db41991e8fd7c5fd0c8, type: 2}
   farPrefab:
   - {fileID: 5574177991627017971, guid: 81c56d74109b0054597badd937d8cfee, type: 3}
   AttackTimeval: 0.4
@@ -754,18 +756,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Defendedtime: 3
   Menus:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  jumpSpeed: 400
   hp: 100
   mp: 100
   atk: 20
   def: 10
   moveSpeed: 10
   isDefended: 0
+  Defendedtime: 0
 --- !u!50 &748039137
 Rigidbody2D:
   serializedVersion: 4
@@ -781,7 +782,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -813,22 +814,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.127927, y: 4.1813183}
   m_EdgeRadius: 0
---- !u!58 &1183320248
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6225400626644811228}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.10887861, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.744975
 --- !u!1 &6384237704757080495
 GameObject:
   m_ObjectHideFlags: 0

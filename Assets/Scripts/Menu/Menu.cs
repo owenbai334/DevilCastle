@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
     public Scrollbar[] scrollbars; //0 滾輪 1背景 2音效
     private int count = -1;
     public Player player;
+    public GameObject GameLoad;
     void Awake()
     {
         Instance = this;
@@ -103,13 +104,13 @@ public class Menu : MonoBehaviour
     }
     public void Replay()
     {
-        SceneManager.LoadScene("Game");
         Time.timeScale=1; 
-        
+        SceneManager.LoadScene("Game");       
     }
 
     public void ExitStartMenu()
     {
+        Time.timeScale=1; 
         SceneManager.LoadScene("Main");
     }
 
