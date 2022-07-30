@@ -25,12 +25,12 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        ChangeScene.canload=false;
+        ChangeScene.canload=2;
         SceneManager.LoadScene("Game");
     }
     public void LoadGame()
     {
-        ChangeScene.canload=true;
+        ChangeScene.canload=1;
         SceneManager.LoadScene("Game");
     }
     public void Confiig()

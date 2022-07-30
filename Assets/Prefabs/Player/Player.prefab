@@ -764,7 +764,7 @@ MonoBehaviour:
   atk: 20
   def: 10
   moveSpeed: 10
-  jumpSpeed: 400
+  jumpSpeed: 3.5
   isDefended: 0
   Defendedtime: 0
 --- !u!50 &748039137
@@ -778,11 +778,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.69040704
+  m_UseAutoMass: 0
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.1
-  m_GravityScale: 4
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0

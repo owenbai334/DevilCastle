@@ -6,23 +6,28 @@ public class ChangeScene : MonoBehaviour
 {
     public Player player;
     public GameSaveManager GameSave;
-    public static bool canload = false;    
-    void Start()
+    public static int canload = 0;    
+    void Awake()
     {
-        if(canload)
-        {
-            canload=false;
-            player.Load();
-            GameSave.LoadGame();
-        }  
+        SaveLoad();   
     }
     void Update()
     {
-        if(canload)
+        SaveLoad();
+    }
+    void SaveLoad()
+    {
+        if(canload==1)
         {
-            canload=false;
+            canload=0;
             player.Load();
             GameSave.LoadGame();
+        }
+        if(canload==2)
+        {
+            canload=0;
+            player.Save();
+            GameSave.SaveGame();
         } 
     }
 }

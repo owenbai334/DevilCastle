@@ -10,7 +10,7 @@ public class OrangeEnemy : MonoBehaviour
     float MoveTime;
     public float AllMovetime = 0.5f;
     [HideInInspector]
-    [SerializeField] Vector3 position;
+    public Vector3 position;
     //轉身
     SpriteRenderer sr;
     [HideInInspector]
@@ -20,7 +20,7 @@ public class OrangeEnemy : MonoBehaviour
     public float damage =10;
     //生命
     public float hp = 100;
-    [HideInInspector]
+    //[HideInInspector]
     [SerializeField] float TotalHp;
     [HideInInspector]
     public Slider hpSlider;
@@ -33,12 +33,6 @@ public class OrangeEnemy : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         TotalHp = hp;
-        hpSlider = GetComponentInChildren<Slider>();
-    }
-    public void Load()
-    {
-        transform.position = position;
-        sr = GetComponent<SpriteRenderer>();
         hpSlider = GetComponentInChildren<Slider>();
     }
     // Update is called once per frame

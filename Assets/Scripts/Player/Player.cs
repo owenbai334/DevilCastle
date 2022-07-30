@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
 
             sr.sprite = PlayerSprites[0];
             RealPosition = ClosePosition[1];
-            transform.Translate(new Vector3(-moveSpeed*Time.deltaTime,0,0),Space.World);
+            transform.Translate(new Vector2(-moveSpeed*Time.deltaTime,0),Space.World);
             farEulerAngles = new Vector3(0,0,90);
             closeEulerAngles = new Vector3(0,180,0);
         }
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
         {
             sr.sprite = PlayerSprites[1];
             RealPosition = ClosePosition[0];
-            transform.Translate(new Vector3(moveSpeed*Time.deltaTime,0,0),Space.World);
+            transform.Translate(new Vector2(moveSpeed*Time.deltaTime,0),Space.World);
             farEulerAngles = new Vector3(0,0,-90);
             closeEulerAngles = new Vector3(0,0,0);
         }
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
             if(canJump)
             {
                 canJump=false; 
-                transform.Translate(0,jumpSpeed*Time.deltaTime,0);
+                transform.Translate(new Vector2(0,jumpSpeed),Space.World);
             }           
         }
     }

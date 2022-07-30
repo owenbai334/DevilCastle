@@ -1098,7 +1098,6 @@ MonoBehaviour:
   - {fileID: 1307879099}
   - {fileID: 621286300}
   - {fileID: 2124245868}
-  player: {fileID: 515012718}
   GameLoad: {fileID: 353646195}
 --- !u!1001 &204108867
 PrefabInstance:
@@ -2260,14 +2259,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2060702836, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060702836, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811228, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2317,6 +2308,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: jumpSpeed
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[0]
       value: 
       objectReference: {fileID: 32092734}
@@ -2348,14 +2347,6 @@ PrefabInstance:
       propertyPath: Status.Array.data[5]
       value: 
       objectReference: {fileID: 1491738625}
-    - target: {fileID: 7772306536325131798, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772306536325131798, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
 --- !u!4 &381610432 stripped
@@ -11087,9 +11078,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1987254707}
-        m_TargetAssemblyTypeName: GameSaveManager, Assembly-CSharp
-        m_MethodName: SaveGame
+      - m_Target: {fileID: 201297153}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11494,9 +11485,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1987254707}
-        m_TargetAssemblyTypeName: GameSaveManager, Assembly-CSharp
-        m_MethodName: LoadGame
+      - m_Target: {fileID: 201297153}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

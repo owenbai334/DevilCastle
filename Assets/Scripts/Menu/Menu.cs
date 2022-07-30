@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour
     private bool exitcount = false; 
     public Scrollbar[] scrollbars; //0 滾輪 1背景 2音效
     private int count = -1;
-    public Player player;
     public GameObject GameLoad;
     void Awake()
     {
@@ -24,8 +23,6 @@ public class Menu : MonoBehaviour
         Bags();
         Buttons[count].SetActive(false);    
         count = -1;
-        save.onClick.AddListener(() => player.Save());
-        load.onClick.AddListener(() => player.Load());
     }
 
     // Update is called once per frame
@@ -127,5 +124,13 @@ public class Menu : MonoBehaviour
     public void OtherMusic()
     {
         Music[1].text = ((int)(scrollbars[2].value*100)).ToString();
+    }
+    public void Save()
+    {
+        ChangeScene.canload=2;
+    }
+    public void Load()
+    {
+        ChangeScene.canload=1;
     }
 }

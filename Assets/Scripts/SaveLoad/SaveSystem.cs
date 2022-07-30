@@ -50,26 +50,6 @@ public static class SaveSystem
         }
     }
     #endregion
-
-    #region "delete savefile"
-    public static void DeleteSaveFile(string SaveFilename)
-    {
-        var path = Path.Combine(Application.persistentDataPath,SaveFilename);
-        
-        try
-        {
-            File.Delete(path);
-        }
-        catch(System.Exception expection)
-        {
-            #if UNITY_EDITOR
-            Debug.LogError($"成功儲存在{path}.\n{expection}");
-            #endif
-        }
-
-    }
-    
-    #endregion
 }
 
 
