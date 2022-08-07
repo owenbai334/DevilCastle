@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
 {
     public static Menu Instance;
     public GameObject[] Menus; //0 暫停背景, 1 滾輪,2 一般按鈕,3 兩個退出按鈕
-    public GameObject[] Buttons; //0 狀態,1 背包,2 好感度,3設定,4存檔,5讀檔,6任務
+    public GameObject[] Buttons; //0 背包,1 狀態,2 設定
     public Text[] Music; //0背景 1音效
     public Button save;
     public Button load;
@@ -64,7 +64,7 @@ public class Menu : MonoBehaviour
     }
     public void MenuMove()
     {
-        Menus[2].transform.localPosition=new Vector3(0,scrollbars[0].value*600,0);  
+        Menus[2].transform.localPosition=new Vector3(0,scrollbars[0].value*300,0);  
     }
     void MenuClose()
     {
@@ -73,30 +73,20 @@ public class Menu : MonoBehaviour
         Menus[3].SetActive(false);
         Buttons[count].SetActive(true);
     }
-    public void Status()
+    public void Bags()
     {
         count = 0;
         MenuClose();
     }
 
-    public void Bags()
+    public void Status()
     {
         count = 1 ;
         MenuClose();
     }
-    public void Loves()
-    {
-        count = 2 ;
-        MenuClose();
-    }
     public void Config()
     {
-        count = 3 ;
-        MenuClose();
-    }
-    public void Tesk()
-    {
-        count = 6 ;
+        count = 2 ;
         MenuClose();
     }
     public void Replay()
