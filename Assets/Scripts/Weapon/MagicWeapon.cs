@@ -22,6 +22,11 @@ public class MagicWeapon : MonoBehaviour
             }          
             Die();
         }
+        else if(col.gameObject.tag=="Boss")
+        {
+            col.GetComponent<Boss>().Ondamage(damage);         
+            Die();
+        }
     }
     void Die()
     {

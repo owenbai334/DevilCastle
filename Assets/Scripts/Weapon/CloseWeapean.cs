@@ -22,6 +22,11 @@ public class CloseWeapean : MonoBehaviour
             }          
             Die();
         }
+        else if(col.gameObject.tag=="Boss")
+        {
+            col.GetComponent<Boss>().Ondamage(damage);         
+            Die();
+        }
     }
     void Die()
     {

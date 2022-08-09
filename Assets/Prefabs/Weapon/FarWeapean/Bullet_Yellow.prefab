@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7421284743438754503}
   m_Layer: 0
   m_Name: Bullet_Yellow
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31878581669d9ce448e0085e03d19e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  movespeed: 10
   damage: 10
 --- !u!58 &-7421284743438754503
 CircleCollider2D:

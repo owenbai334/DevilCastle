@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6264268284766653901}
   m_Layer: 0
   m_Name: Close_sword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +112,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41a77dae2b607a40a201b99d2342313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0

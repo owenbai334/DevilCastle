@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
   m_PrefabInstance: {fileID: 381610431}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1694744262}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22f43368800bfd419394ba7473a26b6, type: 3}
@@ -8305,6 +8305,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691288763}
   m_CullTransparentMesh: 1
+--- !u!1 &1694744262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6225400626644811228, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+  m_PrefabInstance: {fileID: 381610431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1710807520
 GameObject:
   m_ObjectHideFlags: 0
@@ -11472,17 +11477,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1210705003, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210705003, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4562894955044793203, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4562894955044793203, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.32
+      value: 7.58
       objectReference: {fileID: 0}
     - target: {fileID: 4562894955044793203, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 4562894955044793203, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11520,7 +11533,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4562894955044793206, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1694744262}
+    m_RemovedComponents:
+    - {fileID: 4562894955044793207, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
 --- !u!1001 &6587458063342836925
 PrefabInstance:

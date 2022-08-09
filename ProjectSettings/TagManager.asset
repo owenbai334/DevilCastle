@@ -9,6 +9,8 @@ TagManager:
   - Charator
   - Map
   - Ice
+  - Boss
+  - Weapon
   layers:
   - Default
   - TransparentFX
