@@ -11,6 +11,7 @@ public class GameSaveManager:MonoBehaviour
 	public Inventory[] myInventorys; //0其他,1裝備,2武器,3消耗品
 	public Image[] images; //0 head,1 body,2 shoose,3 far,4 close,5 ring
 	public OrangeEnemy[] orangeEnemy;
+	public Boss[] boss;
 	
 	const string GAME_DATA = "/game_SaveData/Game.game";
 	public void SaveGame()
@@ -36,6 +37,11 @@ public class GameSaveManager:MonoBehaviour
 		for(int i = 0;i<orangeEnemy.Length;i++)
 		{
 			var jsonGame = JsonUtility.ToJson(orangeEnemy[i]);
+			formatter.Serialize(fileGame, jsonGame);
+		}
+		for(int i = 0;i<boss.Length;i++)
+		{
+			var jsonGame = JsonUtility.ToJson(boss);
 			formatter.Serialize(fileGame, jsonGame);
 		}
 		
@@ -67,8 +73,13 @@ public class GameSaveManager:MonoBehaviour
 			{
 				JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fileGame),orangeEnemy[i]);
 			}
+			for(int i = 0;i<boss.Length;i++)
+			{
+				JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fileGame),boss);
+			}
 
 			EnemyData();
+			BossData();
 
 			fileGame.Close();
 
@@ -87,6 +98,14 @@ public class GameSaveManager:MonoBehaviour
 			}
 			orangeEnemy[i].Ondamage(0);
 			orangeEnemy[i].transform.position = orangeEnemy[i].position;
+		}
+	}
+	void BossData()
+	{
+		for(int i=0;i<boss.Length;i++)
+		{
+			boss[i].Ondamage(0);
+			boss[i].transform.position = boss[i].position;
 		}
 	}
 }
