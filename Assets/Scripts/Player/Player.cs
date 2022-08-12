@@ -290,6 +290,16 @@ public class Player : MonoBehaviour
             Die();
         }
     }
+    public void GetHp(float damage)
+    {
+        hp+=damage;
+        if(hp>=TotalHp)
+        {
+            hp=TotalHp;
+        }
+        hpSlider.value =hp/TotalHp;
+        Status[0].text = "HP:"+hp.ToString();
+    }
     public void MpLose(float mplose)
     {
         mp-=mplose;
@@ -302,8 +312,13 @@ public class Player : MonoBehaviour
             mp=0;
         }
         mpSlider.value = mp/TotalMp;
-        Status[3].text = "MP:"+mp.ToString();
-        
+        Status[3].text = "MP:"+mp.ToString();       
+    }
+    public void GetMp(float mplose)
+    {
+        mp+=mplose;
+        mpSlider.value = mp/TotalMp;
+        Status[3].text = "MP:"+mp.ToString();    
     }
     public void Die()
     {
@@ -444,10 +459,10 @@ public class Player : MonoBehaviour
             switch(Idtype)
             {
                 case 30:
-                    Ondamage(-value);
+                    GetHp(value);
                     break;
                 case 31:
-                    MpLose(-value);
+                    GetMp(value);
                     break;
                 case 32:
                     atk += value;

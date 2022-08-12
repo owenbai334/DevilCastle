@@ -21,6 +21,8 @@ public class Boss : MonoBehaviour
     [HideInInspector]
     public bool isDie;
     public Vector3 position;
+    float MoveTime = 0;
+    float AllMovetime = 1f;
     public GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -42,11 +44,11 @@ public class Boss : MonoBehaviour
     void Move()
     {
         x = this.gameObject.transform.position.x - Player.gameObject.transform.position.x;
-        if(x>0)
+        if(x>0&&x<=10)
         {
             transform.Translate(new Vector3(-MoveSpeed*Time.deltaTime,0,0),Space.World);    
         }
-        else if(x<0)
+        else if(x<0&&x>=-10)
         {
             transform.Translate(new Vector3(MoveSpeed*Time.deltaTime,0,0),Space.World);
         }
@@ -68,8 +70,6 @@ public class Boss : MonoBehaviour
     }
     void realmove()
     {
-        float MoveTime = 0;
-        float AllMovetime = 0.5f;
         if(MoveTime<AllMovetime)
         {
             transform.Translate(new Vector3(MoveSpeed*Time.deltaTime,0,0),Space.World);

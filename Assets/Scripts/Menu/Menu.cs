@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
     public Scrollbar[] scrollbars; //0 滾輪 1背景 2音效
     private int count = -1;
     public GameObject GameLoad;
+    public AudioSource backMusic;
     void Awake()
     {
         Instance = this;
@@ -109,6 +110,7 @@ public class Menu : MonoBehaviour
     public void BackMusic()
     {
         Music[0].text = ((int)(scrollbars[1].value*100)).ToString();
+        backMusic.volume = scrollbars[1].value;
     }
 
     public void OtherMusic()
