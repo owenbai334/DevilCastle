@@ -18,6 +18,7 @@ public class Menu : MonoBehaviour
     private int count = -1;
     public GameObject GameLoad;
     public AudioSource backMusic;
+    public AudioSource[] statusMusic;
     void Awake()
     {
         Instance = this;
@@ -109,13 +110,19 @@ public class Menu : MonoBehaviour
 
     public void BackMusic()
     {
-        Music[0].text = ((int)(scrollbars[1].value*100)).ToString();
         backMusic.volume = scrollbars[1].value;
+        Music[0].text = ((int)(scrollbars[1].value*100)).ToString(); 
+        Debug.Log("背景音樂成功");      
     }
 
     public void OtherMusic()
     {
-        Music[1].text = ((int)(scrollbars[2].value*100)).ToString();
+        for(int i =0;i<statusMusic.Length;i++)
+        {
+            statusMusic[i].volume = scrollbars[2].value;
+        }
+        Music[1].text = ((int)(scrollbars[2].value*100)).ToString(); 
+        Debug.Log("音效成功");      
     }
     public void Save()
     {

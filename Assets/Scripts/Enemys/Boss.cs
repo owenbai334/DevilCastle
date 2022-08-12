@@ -44,15 +44,15 @@ public class Boss : MonoBehaviour
     void Move()
     {
         x = this.gameObject.transform.position.x - Player.gameObject.transform.position.x;
-        if(x>0&&x<=10)
+        if(x>0&&x<=20)
         {
             transform.Translate(new Vector3(-MoveSpeed*Time.deltaTime,0,0),Space.World);    
         }
-        else if(x<0&&x>=-10)
+        else if(x<0&&x>=-20)
         {
             transform.Translate(new Vector3(MoveSpeed*Time.deltaTime,0,0),Space.World);
         }
-        else if(x>10||x<-10)
+        else if(x>20||x<-20)
         {
             realmove();
         }
