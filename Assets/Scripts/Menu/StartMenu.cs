@@ -10,8 +10,9 @@ using System;
 public class StartMenu : MonoBehaviour
 {
     
-    public GameObject[] Menus; //0背景 1按鈕 2設定 3關於我們
-    
+    public GameObject[] Menus; //0背景 1按鈕 2設定 3關於我們 4開始 5繼續
+    bool clickStart = false;
+    bool clickLoad = false;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -24,13 +25,35 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        ChangeScene.canload=2;
-        SceneManager.LoadScene("Game");
+        clickStart = !clickStart;
+        clickLoad = false;
+        Menus[4].SetActive(clickStart);
+        Menus[5].SetActive(clickLoad);
     }
     public void LoadGame()
     {
+        clickLoad = !clickLoad;
+        clickStart = false;
+        Menus[5].SetActive(clickLoad);
+        Menus[4].SetActive(clickStart);
+    }
+    public void StartChallengeGame()
+    {
+        ChangeScene.canload=2;
+        SceneManager.LoadScene("Game");
+    }
+    public void LoadChallengeGame()
+    {
         ChangeScene.canload=1;
         SceneManager.LoadScene("Game");
+    }
+    public void StartStory()
+    {
+        SceneManager.LoadScene("Story");
+    }
+    public void LoadStory()
+    {
+        SceneManager.LoadScene("Story");
     }
     public void Confiig()
     {

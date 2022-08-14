@@ -17,12 +17,15 @@ public class Boss : MonoBehaviour
     public float hp;
     [HideInInspector]
     public float TotalHp;
+    [HideInInspector]
     public Slider hpSlider;
     [HideInInspector]
     public bool isDie;
+    [HideInInspector]
     public Vector3 position;
     float MoveTime = 0;
     float AllMovetime = 1f;
+    [HideInInspector]
     public GameObject Player;
     // Start is called before the first frame update
     void Start()
