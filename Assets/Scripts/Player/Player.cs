@@ -326,6 +326,7 @@ public class Player : MonoBehaviour
         Time.timeScale=0;
         Menus[0].SetActive(true);
         Menus[1].SetActive(true);
+        Menu.canESC = false;
     }
     #region "使用或丟掉物品"
     public void ItemUse()

@@ -2262,6 +2262,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: Menus.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Menus.Array.data[0]
       value: 
       objectReference: {fileID: 32092734}
@@ -2269,6 +2273,10 @@ PrefabInstance:
       propertyPath: Menus.Array.data[1]
       value: 
       objectReference: {fileID: 1710807520}
+    - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
+      propertyPath: Menus.Array.data[2]
+      value: 
+      objectReference: {fileID: 4562894954451621911}
     - target: {fileID: 6225400626644811231, guid: f5fb5aa34c01c08409f8cd6d27d42f85, type: 3}
       propertyPath: Status.Array.data[0]
       value: 
@@ -10260,7 +10268,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
   m_PrefabInstance: {fileID: 4562894954451621910}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4562894954451621911}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93c04d05d5869004eab6899548d02fc1, type: 3}
@@ -11646,11 +11654,28 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: Win
+      value: 
+      objectReference: {fileID: 1710807520}
+    - target: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1694744262}
+    - target: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: Background
+      value: 
+      objectReference: {fileID: 32092734}
+    - target: {fileID: 4571731237167191312, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+      propertyPath: WinMessage
+      value: 
+      objectReference: {fileID: 1691288765}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+--- !u!1 &4562894954451621911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4562894955044793206, guid: 39db230e7cd96004a837f8a4a3602bf0, type: 3}
+  m_PrefabInstance: {fileID: 4562894954451621910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6587458063342836925
 PrefabInstance:
   m_ObjectHideFlags: 0

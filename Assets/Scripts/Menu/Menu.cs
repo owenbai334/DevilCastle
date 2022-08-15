@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
     public GameObject GameLoad;
     public AudioSource backMusic;
     public AudioSource[] statusMusic;
+    public static bool canESC = true;
     void Awake()
     {
         Instance = this;
@@ -34,6 +35,10 @@ public class Menu : MonoBehaviour
     }
     public void escape()
     {
+        if(canESC==false)
+        {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Escape)&&count==-1)
         {
             if(!menucount)
@@ -94,12 +99,14 @@ public class Menu : MonoBehaviour
     public void Replay()
     {
         Time.timeScale=1; 
+        canESC = true;
         SceneManager.LoadScene("Game");       
     }
 
     public void ExitStartMenu()
     {
         Time.timeScale=1; 
+        canESC = true;
         SceneManager.LoadScene("Main");
     }
 

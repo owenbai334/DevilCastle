@@ -14,6 +14,12 @@ public class Boss : MonoBehaviour
     public bool canJump = true;
     public float jumpSpeed = 4;
     public float damage = 50;
+    [HideInInspector]
+    public GameObject Win;
+    [HideInInspector]
+    public Text WinMessage;
+    [HideInInspector]
+    public GameObject Background;
     public float hp;
     [HideInInspector]
     public float TotalHp;
@@ -40,6 +46,11 @@ public class Boss : MonoBehaviour
         if(isDie)
         {
             this.gameObject.SetActive(false);
+            Win.SetActive(true);
+            WinMessage.text = "恭喜你贏了";
+            Time.timeScale=0; 
+            Background.SetActive(true);
+            Menu.canESC = false;
         }
         Move();
         Jump();

@@ -39,20 +39,24 @@ public class StartMenu : MonoBehaviour
     }
     public void StartChallengeGame()
     {
+        Menu.canESC = true;
         ChangeScene.canload=2;
         SceneManager.LoadScene("Game");
     }
     public void LoadChallengeGame()
     {
+        Menu.canESC = true;
         ChangeScene.canload=1;
         SceneManager.LoadScene("Game");
     }
     public void StartStory()
     {
+        Menu.canESC = true;
         SceneManager.LoadScene("Story");
     }
     public void LoadStory()
     {
+        Menu.canESC = true;
         SceneManager.LoadScene("Story");
     }
     public void Confiig()
